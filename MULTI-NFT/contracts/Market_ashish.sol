@@ -13,7 +13,7 @@ contract MarketPlace {
     
     AREVEAToken token;
     NFT nft;
-   MultipleNFT MNFT;
+    MultipleNFT MNFT;
   
     //keep the record for tokenID is listed on sale or not
     mapping(uint256 => bool) public tokenIdForSale;
@@ -21,6 +21,8 @@ contract MarketPlace {
     mapping(uint256 => uint256) public tokenprice;
     
     mapping(uint256 => address) private nftonwer;
+
+  
     
     
          address public contractaddress= address(this);
@@ -28,7 +30,7 @@ contract MarketPlace {
     //enum nftBuy{erc721,erc1155} nftBuy public selection;
 
 function nftSale(uint256 _tokenId,uint256 _tokenprice, bool forSale) external {
-       // require(msg.sender == nft.ownerOf(_tokenId),"Only owners can change this status");
+       require(msg.sender == nft.ownerOf(_tokenId),"Only owners can change this status");
         
         tokenIdForSale[_tokenId] = forSale;
         tokenprice[_tokenId] = _tokenprice;
@@ -63,28 +65,22 @@ function nftSale(uint256 _tokenId,uint256 _tokenprice, bool forSale) external {
     function buyMultiNFT(uint256 _tokenId, uint256 _amount) public payable {
         address owner = nftonwer[_tokenId];
         uint256 price = tokenprice[_tokenId];
-       // uint256 amount = _amount;
+        uint256  amount = _amount;
         require(tokenIdForSale[_tokenId],"Token must be on sale first");
 
         require(price * _amount == msg.value, "Send value is not equal to NFT price");
 
         require(owner != msg.sender, "NFT already yours");
 
-
-
-        MNFT.safeTransferFrom(address(this), msg.sender, _tokenId, _amount, "0x00");
-
-
-
-        uint256 royalty = _amount * price * (MNFT.royaltyFee(_tokenId) / 100);
+        uint256 royalty = amount * price * (MNFT.royaltyFee(_tokenId) / 100);
 
         address minter = MNFT.getCreator(_tokenId);
-
-
 
         payable(minter).transfer(royalty);
 
         payable(owner).transfer((price * _amount) - royalty);
+
+        MNFT.safeTransferFrom(address(this), msg.sender, _tokenId, _amount, "0x00");
 
    
 
@@ -108,16 +104,18 @@ uint public nftId;
     uint public highestBid;
     mapping(address => uint) public bids;
 
-function startAuction(_tokenId) external {
+function startAuction(uint _tokenId ,uint _startingBid, uint _amount ) external {
         require(!started, "started");
-        require(msg.sender == nft.ownerOf(_tokenId), "Not owner of the NFT")||
-        require(msg.sender== MNFT.getCreator(_tokenId), "Not have multiple NFTs");
-        
-        nft.transferFrom(msg.sender, address(this), nftId)||
-        MNFT.safeTransferFrom(msg.sender, address(this), _tokenId, _amount, "0x00" );
+        require(msg.sender == nft.ownerOf(_tokenId)||msg.sender== MNFT.getCreator(_tokenId), "Not owner of the NFT");
+        if (_amount ==1){ 
+        nft.transferFrom(msg.sender, address(this),_tokenId);
+        }
+        if (_amount >1) {
+        MNFT.safeTransferFrom(address(this), msg.sender, _tokenId, _amount, "0x00");
+        }
         started = true;
         endAt = block.timestamp + 7 days;
-
+        highestBid = _startingBid;
         emit Start();
     }
  function bid() external payable {
@@ -135,7 +133,7 @@ function startAuction(_tokenId) external {
         emit Bid(msg.sender, msg.value);
     }
 
-    function withdrawAmountFromAuction() external {
+    function withdrawBidAmount() external {
         uint bal = bids[msg.sender];
         bids[msg.sender] = 0;
         payable(msg.sender).transfer(bal);
