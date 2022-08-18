@@ -33,6 +33,8 @@ contract NFT is ERC721 {
 
     function transferOwnership(address newOwner) external onlyOwner returns(bool){
         require(newOwner != address(0), "Ownable: new owner is the zero address");
+        //tx.gasprice (uint); //: gas price of the transaction
+        //msg.gas (uint): remaining gas
         owner = newOwner;
         emit OwnershipTransferred(owner, newOwner);
         return true;

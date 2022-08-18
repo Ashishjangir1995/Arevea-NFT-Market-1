@@ -14,7 +14,7 @@ contract MarketPlace {
     AREVEAToken token;
     NFT nft;
     MultipleNFT MNFT;
-  
+    //create a struct for all detals of nft type 
     //keep the record for tokenID is listed on sale or not
     mapping(uint256 => bool) public tokenIdForSale;
 
@@ -27,7 +27,8 @@ contract MarketPlace {
     
          address public contractaddress= address(this);
     
-    //enum nftBuy{erc721,erc1155} nftBuy public selection;
+    enum nftBuy{erc721,erc1155} 
+    nftBuy public selection;
 
 function nftSale(uint256 _tokenId,uint256 _tokenprice, bool forSale) external {
        require(msg.sender == nft.ownerOf(_tokenId),"Only owners can change this status");
@@ -37,7 +38,7 @@ function nftSale(uint256 _tokenId,uint256 _tokenprice, bool forSale) external {
         nftonwer[_tokenId] = (msg.sender);
         
     }    
-   
+   // user input variable nf
     function buySingleNft(uint256 _tokenId) public {
        // if(selection = nftBuy.erc721)
         require(tokenIdForSale[_tokenId],"Token must be on sale first");
