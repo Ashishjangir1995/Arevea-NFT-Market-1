@@ -1,0 +1,377 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_buyerFee",
+						"type": "uint8"
+					},
+					{
+						"internalType": "uint8",
+						"name": "_sellerFee",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "Owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					}
+				],
+				"name": "BuyAsset",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "Owner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "quantity",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "buyer",
+						"type": "address"
+					}
+				],
+				"name": "ExecuteBid",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "Owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "seller",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "buyer",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "erc20Address",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "nftAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "enum MarketPlace.BuyType",
+								"name": "nftType",
+								"type": "uint8"
+							},
+							{
+								"internalType": "uint256",
+								"name": "unitPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "tokenId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "qty",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct MarketPlace.Trade",
+						"name": "trade",
+						"type": "tuple"
+					}
+				],
+				"name": "buyAsset",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "buyerServiceFee",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "sellerServiceFee",
+				"outputs": [
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_buyerFee",
+						"type": "uint8"
+					}
+				],
+				"name": "setBuyerServiceFee",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint8",
+						"name": "_sellerFee",
+						"type": "uint8"
+					}
+				],
+				"name": "setSellerServiceFee",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions anymore. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby removing any functionality that is only available to the owner."
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				}
+			},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"MarketPlace.sol": "MarketPlace"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"External/Context.sol": {
+			"keccak256": "0xaac395688edc1129b10b3c1ff17b281ed12211fdad9d79fbc7c66451e48fd1ff",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4b1edd816216205384dad14ca182e5c1f369d5c441791be33738e0e0b529feaa",
+				"dweb:/ipfs/QmVM6viMdjTjqY8Em6i2iKgKQtcwxTXzUchNxSfZHkUMMq"
+			]
+		},
+		"External/IERC1155.sol": {
+			"keccak256": "0xbf541fc72c92377a1831c8bb3357357d8b1fb360b688c6616edbc501f592749e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a110557004f6f34333236bae1c1aa8b7a518d0355d93273d1724b662e77f93fd",
+				"dweb:/ipfs/QmSX8CMTw4c5TQaYiZByWEhtqEtnqYyKcacRApo5iiHbPx"
+			]
+		},
+		"External/IERC165.sol": {
+			"keccak256": "0x04477a1cac572cc62ecd9df747d418b5898d40a6099a253b061dad31575a75fd",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4aefb7b8801f749cebe99f13ea15979df1c73a16dbefcf2eb0f310c93149bd7f",
+				"dweb:/ipfs/QmaGkUytPvCyquqpZbGe3eDkG2jCYZYVGug6GvVC1AavNi"
+			]
+		},
+		"External/IERC721.sol": {
+			"keccak256": "0x7730deb9030fc7589d49619637693ad0a45d977c20d39c0067030563202565ab",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9b5a88c3ab6855ba69405cde6712e58b6179e1ec3fc04b936d4ac7bc20cf490a",
+				"dweb:/ipfs/Qmc8CZyFfUhDyDzN9i4ijCogo3eSCKJuR3DgXRyYUE2fSt"
+			]
+		},
+		"External/Ownable.sol": {
+			"keccak256": "0x6fb005d8205986c9adb09fa929a48b46c81c37c84922af923282939f28030db4",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://539dd641f233b73274984c158b4568a300f00727309c0cd05f6390ddf985b331",
+				"dweb:/ipfs/QmYnZsywQLeFGVisx46UZCtj9xRLU1h9ATjhWabxzFP4hS"
+			]
+		},
+		"IERC20.sol": {
+			"keccak256": "0x1f32a75186bb2aaa1f9a4c13a4bf5a603b4af5dc2dfd9c8f71483b34f7f556c1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://f9460ab52630c472d623084d34ab505eb4abfe9d0fdb44bfe46046e3fdb38c93",
+				"dweb:/ipfs/QmasRT1jYUAsRWDSvt4mfTfZH1jdP8uvUUzvsRWdRDN3uS"
+			]
+		},
+		"MarketPlace.sol": {
+			"keccak256": "0x97de2e91eced62f8639c5f063df6d53a84a0ec8e298722da43c155cab1e2bde0",
+			"license": "UNLICENSED",
+			"urls": [
+				"bzz-raw://da0561602fae0884b131d747e89998d9a5959d4642ae5654853bbb0efbbfc09a",
+				"dweb:/ipfs/QmUaiEgNJakWrWU97Ukai2dPsooRUzk9a8h4QsThLRsJzq"
+			]
+		}
+	},
+	"version": 1
+}
