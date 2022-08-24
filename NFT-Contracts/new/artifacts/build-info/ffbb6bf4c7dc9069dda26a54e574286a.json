@@ -1,0 +1,71 @@
+{
+	"id": "ffbb6bf4c7dc9069dda26a54e574286a",
+	"_format": "hh-sol-build-info-1",
+	"solcVersion": "0.8.7",
+	"solcLongVersion": "0.8.7+commit.e28d00a7",
+	"input": {
+		"language": "Solidity",
+		"sources": {
+			"NFT-Contracts/new/MNFT.sol": {
+				"content": "// // SPDX-License-Identifier: MIT\r\n// // OpenZeppelin Contracts (last updated v4.7.0) \r\n\r\n// pragma solidity ^0.8.4;\r\n\r\n// import \"@openzeppelin/contracts/token/ERC1155/ERC1155.sol\";\r\n// import \"@openzeppelin/contracts/access/Ownable.sol\";\r\n\r\n// contract MultipleNFT is ERC1155 {\r\n\r\n//     uint256 newItemId = 1;\r\n//     address public owner;\r\n//     mapping(uint256 => bool) private usedNonce;\r\n//     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);\r\n\r\n//     struct Sign {\r\n//         uint8 v;\r\n//         bytes32 r;\r\n//         bytes32 s;\r\n//         uint256 nonce;\r\n//     }\r\n\r\n//     constructor (string memory name, string memory symbol) ERC1155 (name, symbol) {\r\n//         owner = msg.sender;\r\n//     }\r\n\r\n//     modifier onlyOwner() {\r\n//         require(owner == msg.sender, \"Ownable: caller is not the owner\");\r\n//         _;\r\n//     }\r\n\r\n//     /** @dev change the Ownership from current owner to newOwner address\r\n//         @param newOwner : newOwner address */    \r\n\r\n//     function transferOwnership(address newOwner) public onlyOwner returns(bool){\r\n//         require(newOwner != address(0), \"Ownable: new owner is the zero address\");\r\n//         emit OwnershipTransferred(owner,newOwner);\r\n//         owner = newOwner;\r\n//         return true;\r\n//     }\r\n\r\n//     /** @dev verify the tokenURI that should be verified by owner of the contract.\r\n//         *requirements: signer must be owner of the contract\r\n//         @param tokenURI string memory URI of token to be minted.\r\n//         @param sign struct combination of uint8, bytes32, bytes 32 are v, r, s.\r\n//         note : sign value must be in the order of v, r, s.\r\n\r\n//     */\r\n\r\n//     function verifySign(string memory tokenURI, address caller, Sign memory sign) internal view {\r\n//         bytes32 hash = keccak256(abi.encodePacked(this, caller, tokenURI, sign.nonce));\r\n//         require(owner == ecrecover(keccak256(abi.encodePacked(\"\\x19Ethereum Signed Message:\\n32\", hash)), sign.v, sign.r, sign.s), \"Owner sign verification failed\");\r\n//     }\r\n\r\n//     function createMultiple(string memory uri, uint256 supply, uint256 fee)  public {\r\n//         //require(!usedNonce[sign.nonce],\"Nonce : Invalid Nonce\");\r\n//         //usedNonce[sign.nonce] = true;\r\n//         //verifySign(uri, msg.sender, sign);\r\n//         _mint(newItemId, supply, uri,fee);\r\n//         newItemId = newItemId+1;\r\n//     }\r\n\r\n//     function setBaseURI(string memory _baseURI) public onlyOwner{\r\n//          _setTokenURIPrefix(_baseURI);\r\n//     }\r\n\r\n//     function burn(uint256 tokenId, uint256 supply) public {\r\n//         _burn(msg.sender, tokenId, supply);\r\n//     }\r\n\r\n//     function burnBatch(uint256[] memory tokenIds, uint256[] memory amounts) public {\r\n//         _burnBatch(msg.sender, tokenIds, amounts);\r\n//     }\r\n// }"
+			}
+		},
+		"settings": {
+			"optimizer": {
+				"enabled": false,
+				"runs": 200
+			},
+			"outputSelection": {
+				"*": {
+					"": [
+						"ast"
+					],
+					"*": [
+						"abi",
+						"metadata",
+						"devdoc",
+						"userdoc",
+						"storageLayout",
+						"evm.legacyAssembly",
+						"evm.bytecode",
+						"evm.deployedBytecode",
+						"evm.methodIdentifiers",
+						"evm.gasEstimates",
+						"evm.assembly"
+					]
+				}
+			}
+		}
+	},
+	"output": {
+		"errors": [
+			{
+				"component": "general",
+				"errorCode": "3420",
+				"formattedMessage": "Warning: Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.7;\"\n--> NFT-Contracts/new/MNFT.sol\n\n",
+				"message": "Source file does not specify required compiler version! Consider adding \"pragma solidity ^0.8.7;\"",
+				"severity": "warning",
+				"sourceLocation": {
+					"end": -1,
+					"file": "NFT-Contracts/new/MNFT.sol",
+					"start": -1
+				},
+				"type": "Warning"
+			}
+		],
+		"sources": {
+			"NFT-Contracts/new/MNFT.sol": {
+				"ast": {
+					"absolutePath": "NFT-Contracts/new/MNFT.sol",
+					"exportedSymbols": {},
+					"id": 1,
+					"license": "MIT",
+					"nodeType": "SourceUnit",
+					"nodes": [],
+					"src": "2830:0:0"
+				},
+				"id": 0
+			}
+		}
+	}
+}

@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.16+commit.07a7930e"
 	},
 	"language": "Solidity",
 	"output": {
@@ -704,7 +704,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"MULTI-NFT/contracts/NFT.sol": "NFT"
+			"NFT-Contracts/contracts/NFT.sol": "NFT"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -718,7 +718,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"MULTI-NFT/contracts/ERC721.sol": {
+		"NFT-Contracts/contracts/ERC721.sol": {
 			"keccak256": "0xf2be2d7eb3bb357dac15ae72dfa00127e62bc28ff3ae1d70252cc75d7a89a958",
 			"license": "MIT",
 			"urls": [
@@ -726,7 +726,7 @@
 				"dweb:/ipfs/QmVtbw8HnzVnMdCQrhFWo2iymnRPJTr3a5ybAzCdZqD1Jt"
 			]
 		},
-		"MULTI-NFT/contracts/External/Address.sol": {
+		"NFT-Contracts/contracts/External/Address.sol": {
 			"keccak256": "0x2f46c1f29abceabf3044b58a58b21d6cbfa3cced4c50ef5bb5647f67ac825045",
 			"license": "MIT",
 			"urls": [
@@ -734,7 +734,7 @@
 				"dweb:/ipfs/QmYEfKf9rybhLcLQLM1gfFnmmn3WJ4acEJhRZXxn273rLG"
 			]
 		},
-		"MULTI-NFT/contracts/External/Context.sol": {
+		"NFT-Contracts/contracts/External/Context.sol": {
 			"keccak256": "0xaac395688edc1129b10b3c1ff17b281ed12211fdad9d79fbc7c66451e48fd1ff",
 			"license": "MIT",
 			"urls": [
@@ -742,7 +742,7 @@
 				"dweb:/ipfs/QmVM6viMdjTjqY8Em6i2iKgKQtcwxTXzUchNxSfZHkUMMq"
 			]
 		},
-		"MULTI-NFT/contracts/External/ERC165.sol": {
+		"NFT-Contracts/contracts/External/ERC165.sol": {
 			"keccak256": "0x8e00d4240c1b03af55c4dc34bf9875185da87964f448a4cd34cb5cf80d870014",
 			"license": "MIT",
 			"urls": [
@@ -750,7 +750,7 @@
 				"dweb:/ipfs/QmUVc283Q5EhBtx8qgju3ScGncoHxEMtqSmSSJFFzPtYYV"
 			]
 		},
-		"MULTI-NFT/contracts/External/EnumerableMap.sol": {
+		"NFT-Contracts/contracts/External/EnumerableMap.sol": {
 			"keccak256": "0x3fa04da15ec8b6da6c026493ce01720cdcbbdf0c7a47c1e94be36f98673be0e1",
 			"license": "MIT",
 			"urls": [
@@ -758,7 +758,7 @@
 				"dweb:/ipfs/QmZRgjXjnhkLk786aPx95Hd2RDEYgeTyiERfjHYSXn3ri9"
 			]
 		},
-		"MULTI-NFT/contracts/External/EnumerableSet.sol": {
+		"NFT-Contracts/contracts/External/EnumerableSet.sol": {
 			"keccak256": "0xaf7a8198fc17efcd6974e99b081660fc64c5fa99cbf1f50dc8904ef51985faea",
 			"license": "MIT",
 			"urls": [
@@ -766,7 +766,7 @@
 				"dweb:/ipfs/QmTUyWjKkrcqU5Qbe8bkxWwABoUxQvi5uTEzeQ3ktqkFSq"
 			]
 		},
-		"MULTI-NFT/contracts/External/IERC165.sol": {
+		"NFT-Contracts/contracts/External/IERC165.sol": {
 			"keccak256": "0x04477a1cac572cc62ecd9df747d418b5898d40a6099a253b061dad31575a75fd",
 			"license": "MIT",
 			"urls": [
@@ -774,7 +774,7 @@
 				"dweb:/ipfs/QmaGkUytPvCyquqpZbGe3eDkG2jCYZYVGug6GvVC1AavNi"
 			]
 		},
-		"MULTI-NFT/contracts/External/IERC721.sol": {
+		"NFT-Contracts/contracts/External/IERC721.sol": {
 			"keccak256": "0x7730deb9030fc7589d49619637693ad0a45d977c20d39c0067030563202565ab",
 			"license": "MIT",
 			"urls": [
@@ -782,7 +782,7 @@
 				"dweb:/ipfs/Qmc8CZyFfUhDyDzN9i4ijCogo3eSCKJuR3DgXRyYUE2fSt"
 			]
 		},
-		"MULTI-NFT/contracts/External/IERC721Enumerable.sol": {
+		"NFT-Contracts/contracts/External/IERC721Enumerable.sol": {
 			"keccak256": "0xd08dfa0281ef8ccb90ef6e456afab1b90f4dfeefc3ee1e520f7916bfab2defec",
 			"license": "MIT",
 			"urls": [
@@ -790,7 +790,7 @@
 				"dweb:/ipfs/QmdwpyPzqjWj2wxFP5gXG8DPL4Xd54aMtH9zj5uRFxtmLo"
 			]
 		},
-		"MULTI-NFT/contracts/External/IERC721Metadata.sol": {
+		"NFT-Contracts/contracts/External/IERC721Metadata.sol": {
 			"keccak256": "0x806b84d02f9449da1eb72218f77cfdc09c6704d3b1ab7f48f465b5a52340e2b1",
 			"license": "MIT",
 			"urls": [
@@ -798,7 +798,7 @@
 				"dweb:/ipfs/QmVZaMsvcAddPfEGJiy8vTWNfTUPgTVwrnPzGNbvfojfmT"
 			]
 		},
-		"MULTI-NFT/contracts/External/IERC721Receiver.sol": {
+		"NFT-Contracts/contracts/External/IERC721Receiver.sol": {
 			"keccak256": "0xbe43d698e6a9414104ec88ddca7c736e84e4ba08f3a97bb4be8704adf207c739",
 			"license": "MIT",
 			"urls": [
@@ -806,7 +806,7 @@
 				"dweb:/ipfs/QmQd3D21ng62sdTMRyhfyb2pXrivsRhQWtQrzmGvDn1ms2"
 			]
 		},
-		"MULTI-NFT/contracts/External/Strings.sol": {
+		"NFT-Contracts/contracts/External/Strings.sol": {
 			"keccak256": "0xe0c83dd25019c41fda8798164ae0399a42e70250f7991eaf8c142be9ce9c7edd",
 			"license": "MIT",
 			"urls": [
@@ -814,7 +814,7 @@
 				"dweb:/ipfs/QmS4qk9W9opCSg55SbAVKCEKUsor7LKpoW4gUKf86rNKZg"
 			]
 		},
-		"MULTI-NFT/contracts/NFT.sol": {
+		"NFT-Contracts/contracts/NFT.sol": {
 			"keccak256": "0x8d2f13aa9784e611a0befa1eeba9d326c74c41efa84e7059ee59e22fd91496e8",
 			"license": "MIT",
 			"urls": [

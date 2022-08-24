@@ -302,7 +302,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"MarketPlace.sol": "MarketPlace"
+			"NFT-Contracts/contracts/MarketPlace.sol": "MarketPlace"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -316,7 +316,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"External/Context.sol": {
+		"NFT-Contracts/contracts/External/Context.sol": {
 			"keccak256": "0xaac395688edc1129b10b3c1ff17b281ed12211fdad9d79fbc7c66451e48fd1ff",
 			"license": "MIT",
 			"urls": [
@@ -324,7 +324,7 @@
 				"dweb:/ipfs/QmVM6viMdjTjqY8Em6i2iKgKQtcwxTXzUchNxSfZHkUMMq"
 			]
 		},
-		"External/IERC1155.sol": {
+		"NFT-Contracts/contracts/External/IERC1155.sol": {
 			"keccak256": "0xbf541fc72c92377a1831c8bb3357357d8b1fb360b688c6616edbc501f592749e",
 			"license": "MIT",
 			"urls": [
@@ -332,7 +332,7 @@
 				"dweb:/ipfs/QmSX8CMTw4c5TQaYiZByWEhtqEtnqYyKcacRApo5iiHbPx"
 			]
 		},
-		"External/IERC165.sol": {
+		"NFT-Contracts/contracts/External/IERC165.sol": {
 			"keccak256": "0x04477a1cac572cc62ecd9df747d418b5898d40a6099a253b061dad31575a75fd",
 			"license": "MIT",
 			"urls": [
@@ -340,7 +340,7 @@
 				"dweb:/ipfs/QmaGkUytPvCyquqpZbGe3eDkG2jCYZYVGug6GvVC1AavNi"
 			]
 		},
-		"External/IERC721.sol": {
+		"NFT-Contracts/contracts/External/IERC721.sol": {
 			"keccak256": "0x7730deb9030fc7589d49619637693ad0a45d977c20d39c0067030563202565ab",
 			"license": "MIT",
 			"urls": [
@@ -348,7 +348,7 @@
 				"dweb:/ipfs/Qmc8CZyFfUhDyDzN9i4ijCogo3eSCKJuR3DgXRyYUE2fSt"
 			]
 		},
-		"External/Ownable.sol": {
+		"NFT-Contracts/contracts/External/Ownable.sol": {
 			"keccak256": "0x6fb005d8205986c9adb09fa929a48b46c81c37c84922af923282939f28030db4",
 			"license": "MIT",
 			"urls": [
@@ -356,7 +356,7 @@
 				"dweb:/ipfs/QmYnZsywQLeFGVisx46UZCtj9xRLU1h9ATjhWabxzFP4hS"
 			]
 		},
-		"IERC20.sol": {
+		"NFT-Contracts/contracts/IERC20.sol": {
 			"keccak256": "0x1f32a75186bb2aaa1f9a4c13a4bf5a603b4af5dc2dfd9c8f71483b34f7f556c1",
 			"license": "MIT",
 			"urls": [
@@ -364,7 +364,7 @@
 				"dweb:/ipfs/QmasRT1jYUAsRWDSvt4mfTfZH1jdP8uvUUzvsRWdRDN3uS"
 			]
 		},
-		"MarketPlace.sol": {
+		"NFT-Contracts/contracts/MarketPlace.sol": {
 			"keccak256": "0x97de2e91eced62f8639c5f063df6d53a84a0ec8e298722da43c155cab1e2bde0",
 			"license": "UNLICENSED",
 			"urls": [

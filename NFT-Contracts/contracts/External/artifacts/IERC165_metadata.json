@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.16+commit.07a7930e"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -43,7 +43,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"External/IERC165.sol": "IERC165"
+			"NFT-Contracts/contracts/External/IERC165.sol": "IERC165"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -57,7 +57,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"External/IERC165.sol": {
+		"NFT-Contracts/contracts/External/IERC165.sol": {
 			"keccak256": "0x04477a1cac572cc62ecd9df747d418b5898d40a6099a253b061dad31575a75fd",
 			"license": "MIT",
 			"urls": [
