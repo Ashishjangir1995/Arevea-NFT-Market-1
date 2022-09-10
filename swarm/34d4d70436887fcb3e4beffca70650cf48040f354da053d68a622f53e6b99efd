@@ -1,0 +1,46 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"details": "Collection of functions related to the address type",
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"NFT-Contracts/contracts/market_deploy/MulT_NFT/Address.sol": "Address"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"NFT-Contracts/contracts/market_deploy/MulT_NFT/Address.sol": {
+			"keccak256": "0x2f46c1f29abceabf3044b58a58b21d6cbfa3cced4c50ef5bb5647f67ac825045",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c3ba8de493ce5e34221d17bb880a7ac9ee54910f60bb24d254df2a26e2750700",
+				"dweb:/ipfs/QmYEfKf9rybhLcLQLM1gfFnmmn3WJ4acEJhRZXxn273rLG"
+			]
+		}
+	},
+	"version": 1
+}

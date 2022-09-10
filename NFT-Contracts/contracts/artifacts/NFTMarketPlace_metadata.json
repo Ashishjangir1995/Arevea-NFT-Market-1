@@ -173,11 +173,11 @@
 			]
 		},
 		"NFT-Contracts/contracts/ERC1155.sol": {
-			"keccak256": "0x8fa0bb36e2076205f24c10438bf437ce5c0e7700f5399a64134c067d9b850673",
+			"keccak256": "0xde0e6bb4a909dc322329458bf86255d974667e3e4773516564c9a5dc34b8000c",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0618e850a8f113e5d3ff3ffd3f4246821960bc3085810515b1ab98bb8347ea96",
-				"dweb:/ipfs/QmeYAvXKLy3irweRrfkVLFTymefh43VboqWEznypwruizM"
+				"bzz-raw://dd0024e4ecfcb575e3e401c03885333af73e694449e1d486da0fb69db3a45fa7",
+				"dweb:/ipfs/QmPvCsvsTmKWpcCXQdZKjsXLowzXQuTnxQeevSo15y5va6"
 			]
 		},
 		"NFT-Contracts/contracts/ERC20.sol": {
@@ -189,11 +189,11 @@
 			]
 		},
 		"NFT-Contracts/contracts/ERC721.sol": {
-			"keccak256": "0xf2be2d7eb3bb357dac15ae72dfa00127e62bc28ff3ae1d70252cc75d7a89a958",
+			"keccak256": "0x994ccb6f6235537519c12b03c4e58cce972dd1a287ca682414d516cbd5871f06",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://0ed24f81710577bca15ee9564fa056a13499b3fbcfa1f723e0ba2437108f4f40",
-				"dweb:/ipfs/QmVtbw8HnzVnMdCQrhFWo2iymnRPJTr3a5ybAzCdZqD1Jt"
+				"bzz-raw://65dce14a58079bb8cc9ded45d57ee032332e25771e44c7887efe904180c2907e",
+				"dweb:/ipfs/QmZvEtsJEgvmKb5qLY7ob9ghCMgAEzWYDhpHtwsKLghGtJ"
 			]
 		},
 		"NFT-Contracts/contracts/External/Address.sol": {
@@ -341,11 +341,11 @@
 			]
 		},
 		"NFT-Contracts/contracts/MultipleNFT.sol": {
-			"keccak256": "0xd7aab8151e2ff45ee45f03383911371d5af134d38c593398ac6639f05210e97d",
+			"keccak256": "0x47cfd5dec74d84078318bb47d4648aaa17b2edb24fa92150c731bd3bfc1ec120",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://05c9c705a31fe4672ff54319c2609cb829e62ad560da8b36e4b7e1205f7e788f",
-				"dweb:/ipfs/QmXyKhdmG86vaqBy8paAAJ2FMFLfKL9XtufSXKrUz3UG6E"
+				"bzz-raw://b8afcea80881469be9e5c1b2e94fdcfc9c27b99d92b0b14c29c9ca6ca9e507ef",
+				"dweb:/ipfs/QmTUR6j64rNKXUTwGZcHi72bmeiSiJFPUzu7Y4BLP8QKL1"
 			]
 		},
 		"NFT-Contracts/contracts/NFT.sol": {

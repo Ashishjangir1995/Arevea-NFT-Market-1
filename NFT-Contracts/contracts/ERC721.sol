@@ -54,7 +54,7 @@ contract ERC721 is Context, ERC165, IERC721, IERC721Metadata, IERC721Enumerable 
 
     mapping (uint256 => address) private _creator;
 
-    string private _baseURI = "https://gateway.pinata.cloud/ipfs/";
+    string private _baseURI = "";
 
     bytes4 private constant _INTERFACE_ID_ERC721 = 0x80ac58cd;
 

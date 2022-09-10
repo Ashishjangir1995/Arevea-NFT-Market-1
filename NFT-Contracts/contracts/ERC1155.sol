@@ -27,7 +27,7 @@ contract ERC1155 is Context, ERC165,IERC1155{
 
     // Mapping from account to operator approvals
     mapping (address => mapping(address => bool)) private _operatorApprovals;
-    string public tokenURIPrefix = "https://gateway.pinata.cloud/ipfs/";
+    string public tokenURIPrefix = "";
 
     // Optional mapping for token URIs
     mapping(uint256 => string) private _tokenURIs;
@@ -122,6 +122,13 @@ contract ERC1155 is Context, ERC165,IERC1155{
     function _exists(uint256 tokenId) internal view virtual returns (bool) {
         return _tokenOwners.contains(tokenId);
     }
+    function totalSupply() external view virtual returns (uint256) {
+        return _tokenOwners.length();   
+    }
+
+    //  function totalNFTSupply(uint256 tokenId) external view virtual returns (uint256) {
+    //     return _tokenOwners[tokenId];  
+    // }
 
     /**
         @notice Get the balance of an account's Tokens.
@@ -313,6 +320,10 @@ contract ERC1155 is Context, ERC165,IERC1155{
 
         emit TransferSingle(msg.sender, address(0x0), msg.sender, tokenId, _supply);
         emit URI(_uri, tokenId);
+    }
+
+    function ownerOf(uint256 tokenId) public view virtual  returns (address) {
+        return _tokenOwners.get(tokenId, "ERC721: owner query for nonexistent token");
     }
 
     /**

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signing Vouchers</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type = "application/javascript"> </script>
+</head>
+<body>
+    <script type="text/javascript" src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js"></script>
+    <script type='application/javascript'>
+      var provider;
+      var signer;
+      var myAddress;
+    
+      // Connect to Metamask
+      async function connectWallet() {
+        provider = new ethers.providers.Web3Provider(window.ethereum, "any");
+        await provider.send("eth_requestAccounts", []);
+        signer = provider.getSigner();
+        myAddress = await signer.getAddress();
+        document.getElementById('connect-button').remove();
+        document.getElementById('wallet-address').innerHTML = myAddress;
+        document.getElementById('wallet-info').style.visibility = 'visible';
+      }
+    
+    </script>
+
+</body>
+</html>

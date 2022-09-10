@@ -19,7 +19,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"External/Address.sol": "Address"
+			"NFT-Contracts/contracts/External/Address.sol": "Address"
 		},
 		"evmVersion": "istanbul",
 		"libraries": {},
@@ -33,7 +33,7 @@
 		"remappings": []
 	},
 	"sources": {
-		"External/Address.sol": {
+		"NFT-Contracts/contracts/External/Address.sol": {
 			"keccak256": "0x2f46c1f29abceabf3044b58a58b21d6cbfa3cced4c50ef5bb5647f67ac825045",
 			"license": "MIT",
 			"urls": [

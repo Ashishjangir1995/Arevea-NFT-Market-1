@@ -57,6 +57,7 @@ contract MultipleNFT is ERC1155 {
         //verifySign(uri, msg.sender, sign);
         _mint(newItemId, supply, uri,fee);
         newItemId = newItemId+1;
+
     }
 
     function setBaseURI(string memory _baseURI) public onlyOwner{
@@ -70,4 +71,10 @@ contract MultipleNFT is ERC1155 {
     function burnBatch(uint256[] memory tokenIds, uint256[] memory amounts) public {
         _burnBatch(msg.sender, tokenIds, amounts);
     }
+    function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data) public {
+        _mintBatch(msg.sender, tokenIds, amounts, data);
+    }
+
+
+    
 }

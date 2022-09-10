@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Signing Vouchers</title>
+  <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type = "application/javascript"> </script>
+</head>
+<body>
+<script type="text/javascript">
+    const SIGNING_DOMAIN_NAME = "WEB-3-Club"
+    const SIGNING_DOMAIN_VERSION = "1"
+class SignHelper {
+	constructor(contractAddress,chainId,signer)
+	{
+	this.contractAddress = contractAddress
+	this.chainId = chainId
+	this.signer = signer
+	}
+	async CreateSignature(id,name) {
+	     const obj = (id,name)
+         const domain = await this._signingDomain()
+	     const types = {
+	        WEB3Struct : [
+				{name :"id", type: "uint256"},
+                {name:"name",type : "strung"} 				
+	] 
+    }
+	const signature = await this.signer._signTypedData(domain,types,obj)
+	return {...obj , signature}
+	}
+	
+	 async _signingDomain() {
+	     if (this._domain != null){
+		 return this._domain
+	 }  
+	 const chainId = await this.chainId
+	 this._domain = {
+	   name: SIGNING_DOMAIN_NAME,
+	   version: SIGNING_DOMAIN_VERSION,
+	   verifyingContract: this.contractAddress,
+	   chainId,
+	 }
+	 return this._domain
+	 
+	 }
+	 
+	 static async getSign(contractAddress,chainId,tokenId,name){
+	 var provider = new ethers.providers.Web3Provider(window.etherum)
+	 
+	 await provider.send("eth_requestAccounts",[]);
+	 var signer = provider.getSigner()
+	 await signer.getAddress()
+	 
+	 var lm = new SigHelper(contractAddress,chainId,signer)
+	 var voucher = await lm.CreateSignature(tokenId,name)
+	 
+	 return voucher
+	 
+	 }
+	
+	}
+</script>
+
+</body>
+</html>
