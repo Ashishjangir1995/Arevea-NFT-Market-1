@@ -35,13 +35,23 @@ contract NFT is ERC721 {
         require(owner == msg.sender, "Ownable: caller is not the owner");
         _;
     }
-    //fucntion transfer ownership to newowner 
+     /** @dev change the Ownership from current owner to newOwner address
+        @param newOwner : newOwner address */  
     function transferOwnership(address newOwner) external onlyOwner returns(bool){
         require(newOwner != address(0), "Ownable: new owner is the zero address");
         owner = newOwner;
         emit OwnershipTransferred(owner, newOwner);
         return true;
     }
+
+    /** @dev verify the tokenURI that should be verified by owner of the contract.
+        *requirements: signer must be owner of the contract
+        @param tokenURI string memory URI of token to be minted.
+        @param sign struct combination of uint8, bytes32, bytes 32 are v, r, s.
+        note : sign value must be in the order of v, r, s.
+
+    */
+
 
     function verifySign(string memory tokenURI, address caller, Sign memory sign) internal view {
         bytes32 hash = keccak256(abi.encodePacked(this, caller, tokenURI, sign.nonce));
@@ -72,7 +82,7 @@ contract NFT is ERC721 {
     function setBaseURI(string memory _baseURI) external onlyOwner{
         _setBaseURI(_baseURI);
     }
-    //fuction to Brun nft     
+    //fuction to Brun nfts    
     function burn(uint256 tokenId) external {
         require(_exists(tokenId), "ERC721: nonexistent token");
         _burn(tokenId);
