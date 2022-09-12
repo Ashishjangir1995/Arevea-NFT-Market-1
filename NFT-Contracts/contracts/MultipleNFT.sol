@@ -4,12 +4,16 @@
 pragma solidity ^0.8.4;
 
 import "./ERC1155.sol";
-
+/// @title implementation of nft multiple contract 
+/// @dev its nun-fungible token standard including ERC-1155 standard
 contract MultipleNFT is ERC1155 {
-
+    //Itemid variable  
     uint256 newItemId = 1;
+     //Token owner address
     address public owner;
+     //Mapping usedNonce as approval
     mapping(uint256 => bool) private usedNonce;
+    //event ownership transfered 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     struct Sign {
@@ -18,7 +22,7 @@ contract MultipleNFT is ERC1155 {
         bytes32 s;
         uint256 nonce;
     }
-
+    // inilitialized constructor with token name and token symbol
     constructor (string memory name, string memory symbol) ERC1155 (name, symbol) {
         owner = msg.sender;
     }
@@ -50,6 +54,12 @@ contract MultipleNFT is ERC1155 {
         bytes32 hash = keccak256(abi.encodePacked(this, caller, tokenURI, sign.nonce));
         require(owner == ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)), sign.v, sign.r, sign.s), "Owner sign verification failed");
     }
+      /**
+     * @dev Internal function to mint a new token.
+     * Reverts if the given token ID already exists.
+     * @param tokenURI string memory URI of the token to be minted.
+     * @param fee uint256 royalty of the token to be minted.
+     */
 
     function createMultiple(string memory uri, uint256 supply, uint256 fee)  public {
         //require(!usedNonce[sign.nonce],"Nonce : Invalid Nonce");
@@ -59,18 +69,19 @@ contract MultipleNFT is ERC1155 {
         newItemId = newItemId+1;
 
     }
-
+    //fuction to setBaseURI  
     function setBaseURI(string memory _baseURI) public onlyOwner{
          _setTokenURIPrefix(_baseURI);
     }
-
+    //fuction to Brun nfts  
     function burn(uint256 tokenId, uint256 supply) public {
         _burn(msg.sender, tokenId, supply);
     }
-
+    //fuction to Brun Batch nfts token   
     function burnBatch(uint256[] memory tokenIds, uint256[] memory amounts) public {
         _burnBatch(msg.sender, tokenIds, amounts);
     }
+    //fuction to Mint Batch nfts token
     function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data) public {
         _mintBatch(msg.sender, tokenIds, amounts, data);
     }
