@@ -4,14 +4,19 @@
 pragma solidity ^0.8.4;
 
 import "./ERC721.sol";
-
+/// @title implementation of nft single contract 
+/// @dev its nun-fungible token standard including ERC-721 standard
 contract NFT is ERC721 {
-    
+    //Token counter variable 
     uint256 public tokenCounter;
+    //Token owner address
     address public owner;
+    //Mapping usedNonce as approval
     mapping(uint256 => bool) private usedNonce;
+    //Mappping tokenURIs as approval
     mapping(string => bool) private tokenURIs;
 
+    //event ownership transfered 
     event OwnershipTransferred(address indexed previousOwner, address indexed newOwner);
 
     struct Sign {
@@ -20,7 +25,7 @@ contract NFT is ERC721 {
         bytes32 s;
         uint256 nonce;
     }
-
+    // inilitialized constructor with token name and token symbol
     constructor (string memory tokenName, string memory tokenSymbol) ERC721 (tokenName, tokenSymbol){
         tokenCounter = 1;
         owner = msg.sender;
@@ -30,11 +35,9 @@ contract NFT is ERC721 {
         require(owner == msg.sender, "Ownable: caller is not the owner");
         _;
     }
-
+    //fucntion transfer ownership to newowner 
     function transferOwnership(address newOwner) external onlyOwner returns(bool){
         require(newOwner != address(0), "Ownable: new owner is the zero address");
-        //tx.gasprice (uint); //: gas price of the transaction
-        //msg.gas (uint): remaining gas
         owner = newOwner;
         emit OwnershipTransferred(owner, newOwner);
         return true;
@@ -65,11 +68,11 @@ contract NFT is ERC721 {
         tokenCounter = tokenCounter + 1;
         return newItemId;
     }
-
+    //fuction to setBaseURI  
     function setBaseURI(string memory _baseURI) external onlyOwner{
         _setBaseURI(_baseURI);
     }
-    
+    //fuction to Brun nft     
     function burn(uint256 tokenId) external {
         require(_exists(tokenId), "ERC721: nonexistent token");
         _burn(tokenId);
