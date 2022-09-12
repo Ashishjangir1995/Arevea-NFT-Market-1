@@ -78,11 +78,11 @@ contract NFT is ERC721 {
         tokenCounter = tokenCounter + 1;
         return newItemId;
     }
-    //fuction to setBaseURI  
+    //function to setBaseURI  
     function setBaseURI(string memory _baseURI) external onlyOwner{
         _setBaseURI(_baseURI);
     }
-    //fuction to Brun nfts    
+    //function to Brun nfts    
     function burn(uint256 tokenId) external {
         require(_exists(tokenId), "ERC721: nonexistent token");
         _burn(tokenId);
