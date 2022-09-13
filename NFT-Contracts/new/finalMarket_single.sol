@@ -240,7 +240,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-    
+    //Check updated Bid Price 
     modifier isUpdatedBidGreaterPreviousOne(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -268,7 +268,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check Bid make 
     modifier isbidNotMakeTillNow(
         address _nftContractAddress,
         uint256 _tokenId
@@ -281,7 +281,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check buying and selling price 
     modifier buyPriceMeetSalePrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -294,18 +294,19 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check if price is greater than zero
     modifier priceGreaterThanZero(uint256 _price) {
         require(_price > 0, "Price cannot be 0");
         _;
     }
-
+    //Function to buyAreveaToken from Arevea token owner a required amount 
     function buyAreveaToken(address _erc20_contract, address _buyer, uint256 _amount) public returns (bool){
       address  ERC20_contract= _erc20_contract;
       IERC20(ERC20_contract).transferFrom(0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c,_buyer, _amount);
     return(true);
 
    }
+   //Function to SellAreveaToken 
     function Sell_AreveaToken(address _erc20_contract, address seller, uint256 _amount) public returns (bool){
       address  ERC20_contract= _erc20_contract;
       IERC20(ERC20_contract).transferFrom(seller, 0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c, _amount);
@@ -313,7 +314,7 @@ contract NFTSingleMarketplace {
 
    }
 
-    // NFT FIXED SALE
+    // NFT FIXED SALE Function 
 
     function nftFixedSale(
         address _nftContractAddress,
@@ -354,7 +355,7 @@ contract NFTSingleMarketplace {
             block.timestamp
         );
     }
-
+    //Functon to Cancel Fixedsale
     function cancelFixedsale(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInFixedSale(_nftContractAddress, _tokenId)
@@ -372,7 +373,7 @@ contract NFTSingleMarketplace {
 
         emit CancelNftFixedSale(_nftContractAddress, msg.sender, _tokenId);
     }
-
+    //Function on update sale price 
     function updateFixedSalePrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -392,7 +393,7 @@ contract NFTSingleMarketplace {
             _updateSalePrice
         );
     }
-
+    //Function to buy from fixedsale
     function buyFromFixedSale(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -430,7 +431,7 @@ contract NFTSingleMarketplace {
         );
     }
 
-    // NFT AUCTION SALE
+    // NFT AUCTION SALE FUNCTION
 
     function createNftAuctionSale(
         address _nftContractAddress,
@@ -469,7 +470,7 @@ contract NFTSingleMarketplace {
             _minPrice
         );
     }
-
+    //Function to make bid 
     function makeBid(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -508,7 +509,7 @@ contract NFTSingleMarketplace {
 
         emit NftBidPrice(_nftContractAddress, _tokenId, _bidPrice, msg.sender);
     }
-
+    //Function to update Bid Price 
     function updateTheBidPrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -558,7 +559,7 @@ contract NFTSingleMarketplace {
             msg.sender
         );
     }
-
+    //Functino to Cancel Auction sell 
     function _cancelAuctionSale(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
@@ -580,7 +581,7 @@ contract NFTSingleMarketplace {
 
         emit CancelNftAuctionSale(_nftContractAddress, _tokenId, msg.sender);
     }
-
+    //Function to settle Auction 
     function settleAuction(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
@@ -609,7 +610,7 @@ contract NFTSingleMarketplace {
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller
         );
     }
-
+    //Functino to withDraw Bid money
     function withdrawBid(address _nftContractAddress, uint256 _tokenId)
         external
         isAuctionOver(_nftContractAddress, _tokenId)
@@ -631,22 +632,22 @@ contract NFTSingleMarketplace {
 
         emit withdrawNftBid(_nftContractAddress, _tokenId, msg.sender);
     }
-
+    //Functon to get NFT Aucttion Sale Details
     function getNftAuctionSaleDetails(
         address _nftContractAddress,
         uint256 _tokenId
     ) external view returns (Auction memory) {
         return nftContractAuctionSale[_nftContractAddress][_tokenId];
     }
-
+    //Function to View getAuctionSale Details
     function getAuctionSaleNFT() external view returns (SaleInfo[] memory) {
         return auctionSaleNFT;
     }
-
+    //Function to View getFixedSale
     function getFixedSaleNFT() external view returns (SaleInfo[] memory) {
         return fixedSaleNFT;
     }
-
+    //Function to View Fixed Sale 
     function getFixedSale(address _nftContractAddress, uint256 _tokenId)
         external
         view
@@ -654,7 +655,7 @@ contract NFTSingleMarketplace {
     {
         return nftContractFixedSale[_nftContractAddress][_tokenId];
     }
-
+    //Internal Function to Receive NFT
     function onERC721Received(
         address,
         address from,
@@ -663,7 +664,7 @@ contract NFTSingleMarketplace {
     ) external pure returns (bytes4) {
         return IERC721Receiver.onERC721Received.selector;
     }
-
+    //Intenal Function to NFT Transfer and payment to seller 
     function _transferNftAndPaySeller(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -684,7 +685,7 @@ contract NFTSingleMarketplace {
             _bidPrice
         );
     }
-
+    //Internal Function to token amount transfer 
     function _tokenAmountTransfer(
         address _nftSeller,
         address _erc20,
@@ -696,14 +697,14 @@ contract NFTSingleMarketplace {
         );
         IERC20(_erc20).transfer(_nftSeller, _buyAmount);
     }
-
+    //Internal function to amount transfer
     function _nativeAmountTransfer(address _nftSeller, uint256 _buyAmount)
         internal
     {
         (bool success, ) = _nftSeller.call{value: _buyAmount}("");
         require(success, "refund failed");
     }
-
+    // Internal function to storeAuctionDetails 
     function _storedNftAuctionDetails(
         address _nftContractAddress,
         address _erc20,
@@ -730,7 +731,7 @@ contract NFTSingleMarketplace {
             _tokenId
         );
     }
-
+    
     function _isTokenOrCoin(
         address _nftSeller,
         address _erc20,
