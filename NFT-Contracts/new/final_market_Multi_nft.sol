@@ -850,14 +850,14 @@ contract NFTMultiMarketplace {
             _data
         );
     }
-    //internal Function to 
+    //internal Function to bid amount transfer
     function _bidAmountTransfer(uint256 _buyAmount, address _erc20) internal {
         require(
             IERC20(_erc20).transferFrom(msg.sender, address(this), _buyAmount),
             "allowance not enough"
         );
     }
-    
+    //Internal functino to check owner of nft
     function _ownerOf(address _nftContractAddress, uint256 tokenId)
         internal
         view
@@ -866,7 +866,7 @@ contract NFTMultiMarketplace {
         return
             IERC1155(_nftContractAddress).balanceOf(msg.sender, tokenId) != 0;
     }
-
+   //Function to check nft contract address
     function isERC1155(address _nftContractAddress)
         external
         view
