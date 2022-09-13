@@ -7,16 +7,19 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
-
+//necessary imports from openzaplin EIP-712 standard
 contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
+    // Public constant for Lazy mint Signature maker 
     bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
+    // Private constant signature name ,version and chainId 
     string private constant names = "LazyNFTMinting-signature";
     string private constant version = "1";
     uint256 public chainId = 4;
-
+   
+    //Mapping address to PendingWithdrawals
     mapping(address => uint256) pendingWithdrawals;
-
+   
+   //Constructor for minter
     constructor(address payable minter)
         ERC721("LazyNFT", "LAZ")
         EIP712(names, version)
@@ -91,7 +94,7 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
     function availableToWithdraw() public view returns (uint256) {
         return pendingWithdrawals[msg.sender];
     }
-
+    //Function to match Signature
     function executeSetIfSignatureMatch(
         uint8 v,
         bytes32 r,
@@ -109,7 +112,7 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
                 address(this)
             )
         );
-
+        //ABI Encode hash 
         bytes32 hashStruct = keccak256(
             abi.encode(
                 keccak256(
@@ -127,7 +130,7 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
         address signer = ecrecover(hash, v, r, s);
         return signer;
     }
-
+    //Function to getChainId
     function getChainID() external view returns (uint256) {
         uint256 id;
         assembly {
