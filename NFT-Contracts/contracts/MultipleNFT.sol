@@ -69,19 +69,19 @@ contract MultipleNFT is ERC1155 {
         newItemId = newItemId+1;
 
     }
-    //fuction to setBaseURI  
+    //function to setBaseURI  
     function setBaseURI(string memory _baseURI) public onlyOwner{
          _setTokenURIPrefix(_baseURI);
     }
-    //fuction to Brun nfts  
+    //function to Brun nfts  
     function burn(uint256 tokenId, uint256 supply) public {
         _burn(msg.sender, tokenId, supply);
     }
-    //fuction to Brun Batch nfts token   
+    //function to BrunBatch nfts token   
     function burnBatch(uint256[] memory tokenIds, uint256[] memory amounts) public {
         _burnBatch(msg.sender, tokenIds, amounts);
     }
-    //fuction to Mint Batch nfts token
+    //function to MintBatch nfts token
     function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data) public {
         _mintBatch(msg.sender, tokenIds, amounts, data);
     }

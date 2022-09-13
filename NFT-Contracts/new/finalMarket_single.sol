@@ -1,15 +1,17 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-
+ /**
+     * @dev importing IERC721 interface,IERC721Receiver,IERC20,Safemath,IERC20
+     */
 import "@openzeppelin/contracts/token/ERC721/IERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-
+// NFTSingleMarketplace contract inherits ERC721 and  above imports 
 contract NFTSingleMarketplace {
     using SafeMath for uint256;
-
+    //define Auction for single nft market 
     struct Auction {
         uint256 auctionStart;
         uint256 auctionEnd;
@@ -19,30 +21,35 @@ contract NFTSingleMarketplace {
         address nftSeller;
         address erc20;
     }
-
+    //define struct for Fixed sale 
     struct FixedSale {
         address nftSeller;
         address nftBuyer;
         address erc20;
         uint256 salePrice;
     }
-
+    //define struct for SaleInfo
     struct SaleInfo {
         address _nftContractAddress;
         uint256 _tokenID;
     }
-
+    //mapping address to FixedSale for nftContractFixedSale
     mapping(address => mapping(uint256 => FixedSale)) nftContractFixedSale;
+    //mapping address to Auction for nftContractAuctionSale
     mapping(address => mapping(uint256 => Auction)) nftContractAuctionSale;
+    //mapping address for uint variable nftSaleStatus
     mapping(address => mapping(uint256 => uint256)) public nftSaleStatus;
+    //mapping address for userBidPriceOnNFT
     mapping(address => mapping(uint256 => mapping(address => uint256)))
         public userBidPriceOnNFT;
+    //mapping address for indexFixedSaleNFT
     mapping(address => mapping(uint256 => uint256)) indexFixedSaleNFT;
+    //mapping address for indexAuctionSaleNFT
     mapping(address => mapping(uint256 => uint256)) indexAuctionSaleNFT;
 
     SaleInfo[] fixedSaleNFT;
     SaleInfo[] auctionSaleNFT;
-
+    //Event NftFixedSale
     event NftFixedSale(
         address nftContractAddress,
         address nftSeller,
@@ -51,26 +58,26 @@ contract NFTSingleMarketplace {
         uint256 salePrice,
         uint256 timeOfSale
     );
-
+    //Event CancelNFTFixedSale
     event CancelNftFixedSale(
         address nftContractAddress,
         address nftSeller,
         uint256 tokenId
     );
-
+    //Event NftFixedSalePriceUpdated
     event NftFixedSalePriceUpdated(
         address nftContractAddress,
         uint256 tokenId,
         uint256 updateSalePrice
     );
-
+    //Event NftBuyFromFixedSale
     event NftBuyFromFixedSale(
         address nftContractAddress,
         address nftBuyer,
         uint256 tokenId,
         uint256 nftBuyPrice
     );
-
+    //Event NftAuctionSale
     event NftAuctionSale(
         address nftContractAddress,
         address nftSeller,
@@ -80,34 +87,34 @@ contract NFTSingleMarketplace {
         uint256 auctionEnd,
         uint256 minPrice
     );
-
+    //Event NftBidPrice 
     event NftBidPrice(
         address nftContractAddress,
         uint256 tokenId,
         uint256 bidPrice,
         address nftBidder
     );
-
+    //Event NftAuctionBidPriceUpdate
     event NftAuctionBidPriceUpdate(
         address nftContractAddress,
         uint256 tokenId,
         uint256 finalBidPrice,
         address nftBidder
     );
-
+    //Event CancelINftAuctionSale
     event CancelNftAuctionSale(
         address nftContractAddress,
         uint256 tokenId,
         address nftSeller
     );
-
+    //Event NftBuyNowPriceUpdate
     event NftBuyNowPriceUpdate(
         address nftContractAddress,
         uint256 tokenId,
         uint256 updateBuyNowPrice,
         address nftOwner
     );
-
+    //Event NftAuctionSettle
     event NftAuctionSettle(
         address nftContractAddress,
         uint256 tokenId,
@@ -115,13 +122,13 @@ contract NFTSingleMarketplace {
         uint256 nftHighestBid,
         address nftSeller
     );
-
+    //Event withdrawNftBid
     event withdrawNftBid(
         address nftContractAddress,
         uint256 tokenId,
         address bidClaimer
     );
-
+    //Check if NFT in Sale or not 
     modifier isNftAlreadyInSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 0,
@@ -129,7 +136,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check if NFT in Fixed sale or not
     modifier isNftInFixedSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 1,
@@ -137,7 +144,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check if NfT in Auction Sale or not 
     modifier isNftInAuctionSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 2,
@@ -145,7 +152,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check the owner of NFT 
     modifier isSaleStartByOwner(address _nftContractAddress, uint256 _tokenId) {
         require(
             msg.sender == IERC721(_nftContractAddress).ownerOf(_tokenId),
@@ -153,7 +160,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+     //Check the owner of NFT 
     modifier isSaleResetByOwner(address _nftContractAddress, uint256 _tokenId) {
         require(
             msg.sender ==
@@ -162,7 +169,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check the Approval is given or not 
     modifier isContractApprove(address _nftContractAddress, uint256 _tokenId) {
         require(
             IERC721(_nftContractAddress).isApprovedForAll(
@@ -173,7 +180,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check if Aucton is ended
     modifier isAuctionOver(address _nftContractAddress, uint256 _tokenId) {
         require(
             block.timestamp >
@@ -183,7 +190,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check Highest bid 
     modifier islatestBidGreaterPreviousOne(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -211,7 +218,7 @@ contract NFTSingleMarketplace {
 
         _;
     }
-
+    //Check Auction is continuing 
     modifier isAuctionOngoing(address _nftContractAddress, uint256 _tokenId) {
         require(
             block.timestamp <
@@ -221,7 +228,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    //Check if NFT Auction reset parameter
     modifier isAuctionResetByOwner(
         address _nftContractAddress,
         uint256 _tokenId
@@ -233,7 +240,7 @@ contract NFTSingleMarketplace {
         );
         _;
     }
-
+    
     modifier isUpdatedBidGreaterPreviousOne(
         address _nftContractAddress,
         uint256 _tokenId,
