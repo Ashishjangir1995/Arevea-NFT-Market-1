@@ -731,7 +731,7 @@ contract NFTSingleMarketplace {
             _tokenId
         );
     }
-    
+    //internal function to check token or coin 
     function _isTokenOrCoin(
         address _nftSeller,
         address _erc20,
@@ -743,7 +743,7 @@ contract NFTSingleMarketplace {
             _nativeAmountTransfer(_nftSeller, _buyAmount);
         }
     }
-
+    //internal functio to check bidamount tranfer allowance 
     function _bidAmountTransfer(uint256 _buyAmount, address _erc20) internal {
         require(
             IERC20(_erc20).transferFrom(msg.sender, address(this), _buyAmount),
