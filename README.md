@@ -2,7 +2,7 @@
 ## Table of contents
 ### Brief summary decentralized marketplace 
 ### Arevea Token and NFT 
-### Smart Contract Functionality 
+### Smart Contract Functionality in brief
 ### Disclaimer 
 
 
@@ -25,7 +25,7 @@ final_market_Multi_nft.sol for Multiple nft buy sell and auction in multinft mar
 
 lazymint.sol is for lazyminting to NFT for future transaction to pass the burden from creater to purchase (gass fees)
 
-### Smart Contract Functionality 
+### Smart Contract Functionality in brief
 
 
 
