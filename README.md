@@ -39,7 +39,7 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 | --------- | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
 | 1         |                        |                               |                                                                                             |
 |           | NFT.sol                |approve                        | 1st - Contract adress , 2nd tokeni                                                          |
-|           | `data-f-color`         | Font color                    | A hex ARGB value. Eg: FFFFOOOO for opaque red.                                              |
+|           |                        | Burn                          | Tokenid                                                                                     |
 |           | `data-f-bold`          | Bold                          | `true` or `false`                                                                           |
 |           | `data-f-italic`        | Italic                        | `true` or `false`                                                                           |
 |           | `data-underline`       | Underline                     | `true` or `false`                                                                           |
