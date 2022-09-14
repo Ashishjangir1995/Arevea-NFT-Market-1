@@ -1,6 +1,18 @@
 # Arevea-NFT-Market Place 
 This documentation of Arevea marketplace in Etherium network ERC721 and ERC1155 multiple token standard.it is also compatable on EVM and other smart chain network. The purpose of this project is to make a online market place is to purchase and sell of NFT - Single and Multiple using AREVEA token and make Voucher related transactions, so that this market place project is initated.  
 
+Structure- 
+All contracts and tests are in the NFT-Contracts folder. There are multiple implementations and you can select in between 
+
+NFT.sol: This is the base ERC-721 token implementation (with support for ERC-165).
+
+MultipleNFT.sol :This is the base ERC1155 token implementation for multiple copies and multiple at same time with reduced gas fees. 
+
+finalMarket_single.sol is the marketplace for Single NFT for buy sell and auction in marketplace 
+
+final_market_Multi_nft.sol for Multiple nft buy sell and auction in multinft marketplace
+
+lazymint.sol is for lazyminting to NFT for future transaction to pass the burden from creater to purchase (gass fees)
 
 AreveaToken, SingleNFT &amp; Multiple NFT with Market and Bid functions 
 
