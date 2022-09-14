@@ -1,7 +1,7 @@
 # AREVEA-NFT Marketplace Documentation
 ## Table of contents
 ### Brief summary decentralized marketplace 
-### Arevea Token and NFT 
+### Arevea Token and NFT Contract .sol files details
 ### Smart Contract Functionality in brief
 ### Disclaimer 
 
@@ -14,7 +14,7 @@ NFT or Non-Fungible Tokens are cryptographic assets that are created on blockcha
 NFTs can be traded with other NFTs or sold/bought via the NFT marketplace, which is a decentralized platform.
 This marketplace is like an eCommerce platform, say Amazon or eBay where different products are listed by sellers, and buyers can buy them.
 
-### Arevea Token and NFT 
+### Arevea Token and NFT Contract .sol files details
 Structure- 
 All contracts and tests are in the NFT-Contracts folder. There are multiple implementations and you can select in between 
 
