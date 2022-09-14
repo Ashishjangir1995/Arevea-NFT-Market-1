@@ -35,7 +35,7 @@ Both Single and Multiple has Separate Marketplace to buy sell and trade nft in m
 
 Lazy minting is different where the NFT is once minted all creatrion and transaction cost of Blockchain is burn by the buyer itself. 
 
-| Category  | Attribute              | Description                   | Values                                                                                      |
+| Serial No  | Contract              | Description         | Parametrs Values                                                                                      |
 | --------- | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
 | font      | `data-f-name`          | Font name                     | "Calibri" ,"Arial" etc.                                                                     |
 |           | `data-f-sz`            | Font size                     | "11" // font size in points                                                                 |
