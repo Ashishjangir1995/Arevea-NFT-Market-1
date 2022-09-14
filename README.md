@@ -1,3 +1,11 @@
+# AREVEA-NFT Marketplace Documentation
+## Table of contents
+### Brief summary decentralized marketplace 
+### Arevea Token and NFT 
+### Smart Contract Functionality 
+### Disclaimer 
+
+
 # Arevea-NFT-Market Place 
 This documentation of Arevea marketplace in Etherium network ERC721 and ERC1155 multiple token standard.it is also compatable on EVM and other smart chain network. The purpose of this project is to make a online market place is to purchase and sell of NFT - Single and Multiple using AREVEA token and make Voucher related transactions, so that this market place project is initated.  
 
