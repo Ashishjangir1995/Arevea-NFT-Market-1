@@ -35,7 +35,6 @@ Both Single and Multiple has Separate Marketplace to buy sell and trade nft in m
 
 Lazy minting is different where the NFT is once minted all creatrion and transaction cost of Blockchain is burn by the buyer itself. 
 
-<<<<<<< HEAD
 | 1) Srial no                         | contract        | function                               | parameter                                                                                                            |
 | ----------------------------------- | --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
 | 1                                   | 721             | approve                                | 1st - Contract adress , 2nd tokenid                                                                                  |
@@ -128,41 +127,6 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |                                     |                 | isERC1155                              | \_nftContractAddress:                                                                                                |
 |                                     |                 | onERC1155BatchReceived                 | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                                      |
 |                                     |                 | onERC1155Received                      | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                                      |
-=======
-| Serial No  | Contract              | Functions        | Parametrs Values                                                                                      |
-| --------- | ---------------------- | ----------------------------- | ------------------------------------------------------------------------------------------- |
-| 1         |                        |                               |                                                                                             |
-|           | NFT.sol                |approve                        | 1st - Contract adress , 2nd tokeni                                                          |
-|           |                        | Burn                          | Tokenid                                                                                     |
-|           | `data-f-bold`          | Bold                          | `true` or `false`                                                                           |
-|           | `data-f-italic`        | Italic                        | `true` or `false`                                                                           |
-|           | `data-underline`       | Underline                     | `true` or `false`                                                                           |
-|           | `data-f-strike`        | Strike                        | `true` or `false`                                                                           |
-| Alignment | `data-a-h`             | Horizontal alignment          | `left`, `center`, `right`, `fill`, `justify`, `centerContinuous`, `distributed`             |
-|           | `data-a-v`             | Vertical alignment            | `bottom`, `middle`, `top`, `distributed`, `justify`                                         |
-|           | `data-a-wrap`          | Wrap text                     | `true` or `false`                                                                           |
-|           | `data-a-indent`        | Indent                        | Integer                                                                                     |
-|           | `data-a-rtl`           | Text direction: Right to Left | `true` or `false`                                                                           |
-|           | `data-a-text-rotation` | Text rotation                 | 0 to 90                                                                                     |
-|           |                        |                               | -1 to -90                                                                                   |
-|           |                        |                               | vertical                                                                                    |
-| Border    | `data-b-a-s`           | Border style (all borders)    | Refer `BORDER_STYLES`                                                                       |
-|           | `data-b-t-s`           | Border top style              | Refer `BORDER_STYLES`                                                                       |
-|           | `data-b-b-s`           | Border bottom style           | Refer `BORDER_STYLES`                                                                       |
-|           | `data-b-l-s`           | Border left style             | Refer `BORDER_STYLES`                                                                       |
-|           | `data-b-r-s`           | Border right style            | Refer `BORDER_STYLES`                                                                       |
-|           | `data-b-a-c`           | Border color (all borders)    | A hex ARGB value. Eg: FFFFOOOO for opaque red.                                              |
-|           | `data-b-t-c`           | Border top color              | A hex ARGB value.                                                                           |
-|           | `data-b-b-c`           | Border bottom color           | A hex ARGB value.                                                                           |
-|           | `data-b-l-c`           | Border left color             | A hex ARGB value.                                                                           |
-|           | `data-b-r-c`           | Border right color            | A hex ARGB value.                                                                           |
-| Fill      | `data-fill-color`      | Cell background color         | A hex ARGB value.                                                                           |
-| numFmt    | `data-num-fmt`         | Number Format                 | "0"                                                                                         |
-|           |                        |                               | "0.00%"                                                                                     |
-|           |                        |                               | "0.0%" // string specifying a custom format                                                 |
-|           |                        |                               | "0.00%;\\(0.00%\\);\\-;@" // string specifying a custom format, escaping special characters |
->>>>>>> cb7864e0a6c390766216fceb5c111c689d955ddd
-
 
 Sources and Address:<br>
 
