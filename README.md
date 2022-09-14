@@ -40,7 +40,7 @@ lazymint.sol is for lazyminting to NFT for future transaction to pass the burden
 Sources and Address:<br>
 
 AreveaToken, SingleNFT &amp; Multiple NFT with Market and Bid functions 
-link to Arevea ERC20 REadme - https://github.com/Tapas15/ERC20/blob/main/README.md<br>
+link to Arevea ERC20 REadme - https://github.com/Tapas15/ERC20/blob/main/README.md
 
 json Market file- link https://github.com/Tapas15/Arevea-NFT-Market/blob/main/MULTI-NFT/contracts/artifacts/MarketPlace.json
 
