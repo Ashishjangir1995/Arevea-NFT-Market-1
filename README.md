@@ -125,29 +125,31 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |   |                 | isERC1155                | \_nftContractAddress:                                                                              |                                                             |  |  |  |  |  |  |  |  |  |
 |   |                 | onERC1155BatchReceived   | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
 |   |                 | onERC1155Received        | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
-| Lazy mint | Approve               | 1)address 2toeknid                                   |
-|           | grantRole             | 1)role 2)Account                                     |
-|           | redeem                | 1)Reedeemer 2)v units 3)r bytes 4)s bytes 5) voucher |
-|           | renounceRole          | 1) role 2) account address                           |
-|           | revokeRole            | 1) role 2) account address                           |
-|           | safeTransferFrom      | 1)from address 2) to address 3)tokenid               |
-|           | safeTransferFrom      | 1)from address 2) to address 3)tokenid 4)data        |
-|           | setApproveforAll      | 1st - operator adddress ,2nd Approve bool            |
-|           | TransferFrom          | 1st From -address 2nd -To Address 3rd -tokenid       |
-|           | withdraw              |                                                      |
-|           | available to withdraw |                                                      |
-|           | balanceOf             | owner address                                        |
-|           | chainid               |                                                      |
-|           | Default admin role    |                                                      |
-|           | get approved          | token id                                             |
-|           | get chain id          |                                                      |
-|           | getRoleAdimin         | role                                                 |
-|           | hasRole               | 1) role 2) account address                           |
-|           | ISApproveforAll       | 1)owner 2)operator                                   |
-|           | Minter role           |                                                      |
-|           | Owner of              | token id                                             |
-|           | supportsinferface     |                                                      |
-|           | tokenuri              |                                                      |
+|   |           |                       |                                                      |
+| - | --------- | --------------------- | ---------------------------------------------------- |
+| 6 | Lazy mint | Approve               | 1)address 2toeknid                                   |
+|   |           | grantRole             | 1)role 2)Account                                     |
+|   |           | redeem                | 1)Reedeemer 2)v units 3)r bytes 4)s bytes 5) voucher |
+|   |           | renounceRole          | 1) role 2) account address                           |
+|   |           | revokeRole            | 1) role 2) account address                           |
+|   |           | safeTransferFrom      | 1)from address 2) to address 3)tokenid               |
+|   |           | safeTransferFrom      | 1)from address 2) to address 3)tokenid 4)data        |
+|   |           | setApproveforAll      | 1st - operator adddress ,2nd Approve bool            |
+|   |           | TransferFrom          | 1st From -address 2nd -To Address 3rd -tokenid       |
+|   |           | withdraw              |                                                      |
+|   |           | available to withdraw |                                                      |
+|   |           | balanceOf             | owner address                                        |
+|   |           | chainid               |                                                      |
+|   |           | Default admin role    |                                                      |
+|   |           | get approved          | token id                                             |
+|   |           | get chain id          |                                                      |
+|   |           | getRoleAdimin         | role                                                 |
+|   |           | hasRole               | 1) role 2) account address                           |
+|   |           | ISApproveforAll       | 1)owner 2)operator                                   |
+|   |           | Minter role           |                                                      |
+|   |           | Owner of              | token id                                             |
+|   |           | supportsinferface     |                                                      |
+|   |           | tokenuri              |                                                      |
 
 Sources and Address:<br>
 
