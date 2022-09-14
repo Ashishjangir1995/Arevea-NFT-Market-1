@@ -95,11 +95,11 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |                                     |                 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                                |
 |                                     |                 | createNftAuctionSale                   | 1) \_nftContractAddress: 2) \_erc20: Address 3)\_tokenId: 4)\_auctionStart5) \_auctionEnd:<br>6\_minPrice:<br><br>   |
 |                                     |                 | makeBid                                | 1)\_nftContractAddress:2) \_tokenId:<br>3)\_bidPrice                                                                 |
-|                                     |                 | settleAuction                          | ![](file:///C:/Users/Home/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
+|                                     |                 | settleAuction                          |                                                         | 
 
 1)\_nftContractAddress 2)\_tokenId: | 1)\_nftContractAddress 2)\_tokenId: |
 | 1)\_nftContractAddress 2)\_tokenId: |
-|                                     |                 | updateTheBidPrice                      | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>                                                        |
+|                                     |                 | updateTheBidPrice                      | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>   |                                                      |
 |                                     |                 | withdrawBid                            | 1)\_nftContractAddress: 2) \_tokenId:<br>                                                                            |
 |                                     |                 | getFixedSale                           | 1) \_nftContractAddress:2)\_tokenId:<br>                                                                             |
 |                                     |                 | getNftAuctionSaleDetails               | 1)\_nftContractAddress2)\_tokenId:                                                                                   |
