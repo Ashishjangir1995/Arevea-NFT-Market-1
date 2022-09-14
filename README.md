@@ -36,11 +36,6 @@ Both Single and Multiple has Separate Marketplace to buy sell and trade nft in m
 Lazy minting is different where the NFT is once minted all creatrion and transaction cost of Blockchain is burn by the buyer itself. 
 
 
-
-
-
-
-
 Sources and Address:<br>
 
 AreveaToken, SingleNFT &amp; Multiple NFT with Market and Bid functions 
@@ -55,11 +50,4 @@ market place contract link- https://rinkeby.etherscan.io/address/0x92dcd49991cd5
 market contract address- 0x92dCD49991CD55ab039aBd077e0F97573378D89D
 
 
-
-these are the files as per discussaion with other required files in folder and other places 
-
-1)NFT.sol - single nft contract 
-2)AVEREAEC20- ERC20 
-3) MultipleNFT.sol
-4)MarketPlace.sol
-
+### Disclaimer 
