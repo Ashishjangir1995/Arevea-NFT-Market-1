@@ -26,7 +26,7 @@ finalMarket_single.sol is the marketplace for Single NFT for buy sell and auctio
 
 final_market_Multi_nft.sol for Multiple nft buy sell and auction in multinft marketplace
 
-lazymint.sol is for lazyminting to NFT for future transaction to pass the burden from creater to purchase (gass fees)
+lazymint.sol allows the user to create NFT without gas fee, transaction to pass the burden from creator to purchaser (gas fees)
 
 ### Smart Contract Functionality in brief
 From the Above Smart contract one is for Single NFT and another is for Multiple NFT , from single NFT we can create Single in Blockchain and that can be buy  sell and trade in NFT market place, for creating single nft in one id is excess amount of gas use so that using one id we can have multiple nfts at one plase , multiple has 2 features one is creating multiple copies and another is creating different items under one id as multiple is called as multiple batch of different nft  at one place. 
