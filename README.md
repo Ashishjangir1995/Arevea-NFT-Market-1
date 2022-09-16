@@ -7,7 +7,7 @@
 
 
 # Arevea-NFT-Market Place 
-This documentation of Arevea marketplace in Etherium network ERC721 and ERC1155 multiple token standard.it is also compatable on EVM and other smart chain network. The purpose of this project is to make a online market place is to purchase and sell of NFT - Single and Multiple using AREVEA token and make Voucher related transactions, so that this market place project is initated.  
+The Arevea marketplace mainly focuses upon the utilization of the Etherium network namely ERC721 for single NFT and ERC1155 for multiple NFT. This is also compatibleble with EVM aka ethereum virtual machine and innumerable other smart chain networks such as 1. Rinkeby Network 2. Ropsten amonst others. The main purpose of this project is to provide a Blockchain based online market place for the sale and purchase of NFT's both Single and Multiple using AREVEA tokens. Arevea tokens may also be utilized for other transactions Thus we may conclude that there is a large scope of growth present permitting us to move forward with this initiation.  
 
 ### Brief summary decentralized marketplace 
 NFT or Non-Fungible Tokens are cryptographic assets that are created on blockchain technology, and have unique identification codes and meta-data, which makes them distinguishable, distinct, and completely unique. 
@@ -37,7 +37,7 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 
 | 1) Srial no                         | contract        | function                               | parameter                                                                                                            |
 | ----------------------------------- | --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| 1                                   | 721             | approve                                | 1st - Contract adress , 2nd tokenid                                                                                  |
+| 1                                   | 721 SINGLE-NFT | approve                                | 1st - Contract adress , 2nd tokenid                                                                                  |
 |                                     |                 | Burn                                   | tokenid                                                                                                              |
 |                                     |                 | createNFT                              | 1st -TokenURI , 2nd Fee                                                                                              |
 |                                     |                 | safeTransferFrom                       | 1st From -address 2nd -To Address 3rd -tokenid                                                                       |
@@ -58,7 +58,7 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |                                     |                 | tokenbyownerbyindex                    | owner index                                                                                                          |
 |                                     |                 | tokenURI                               | tokenid                                                                                                              |
 |                                     |                 |                                        |                                                                                                                      |
-| 2                                   | 1155            | burn                                   | 1)tokenid 2) supply in unit                                                                                          |
+| 2                                   | 1155 MULTINFT      | burn                                   | 1)tokenid 2) supply in unit                                                                                          |
 |                                     |                 | burnBatch                              | 1)tokenid 2) amount                                                                                                  |
 |                                     |                 | createMultiple                         | 1)uri2)Supplier3)Fee in amount                                                                                       |
 |                                     |                 | safeBatchTransferFrom                  | 1)from address2)to address3) tokenid 4)amount 5)data                                                                 |
