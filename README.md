@@ -95,38 +95,61 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |                                     |                 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                                |
 |                                     |                 | createNftAuctionSale                   | 1) \_nftContractAddress: 2) \_erc20: Address 3)\_tokenId: 4)\_auctionStart5) \_auctionEnd:<br>6\_minPrice:<br><br>   |
 |                                     |                 | makeBid                                | 1)\_nftContractAddress:2) \_tokenId:<br>3)\_bidPrice                                                                 |
-|                                     |                 | settleAuction                          | ![](file:///C:/Users/Home/AppData/Local/Temp/msohtmlclip1/01/clip_image002.png)
-
-1)\_nftContractAddress 2)\_tokenId: | 1)\_nftContractAddress 2)\_tokenId: |
-| 1)\_nftContractAddress 2)\_tokenId: |
-|                                     |                 | updateTheBidPrice                      | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>                                                        |
-|                                     |                 | withdrawBid                            | 1)\_nftContractAddress: 2) \_tokenId:<br>                                                                            |
-|                                     |                 | getFixedSale                           | 1) \_nftContractAddress:2)\_tokenId:<br>                                                                             |
-|                                     |                 | getNftAuctionSaleDetails               | 1)\_nftContractAddress2)\_tokenId:                                                                                   |
-|                                     |                 | nftSaleStatus                          | 1)Address 2)units                                                                                                    |
-|                                     |                 | userBidPriceOnNFT                      | 1)Address2)units3)Address                                                                                            |
-|                                     |                 |                                        |                                                                                                                      |
-| 5                                   | NFT Market 1155 | buyFromFixedSale                       | 1)nft contract address 2)tokenid 3)amount 4)NftAmount5)data                                                          |
-|                                     |                 | cancelFixedsale                        | 1)nft contract address 2)tokenid 3)amount 4))data                                                                    |
-|                                     |                 | nftFixedSale                           | 1)nft contract address 2)ERC20 3)tokenid 4)amount 5)SalePrice5)data                                                  |
-|                                     |                 | updateFixedSalePrice                   | 1)nft contact address 2)token id 3) updated sale price                                                               |
-|                                     |                 | nftSaleStatus                          | 1)address2)amount                                                                                                    |
-|                                     |                 | onERC721Received                       | 1)address2)address3)unit4)bytes                                                                                      |
-|                                     |                 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                                |
-|                                     |                 | createNftAuctionSale                   | 1)nft contract address 2)ERC20 3)Tokenid 4)auctionStart 5)AuctionEnd 6)MinPrice 7)Nftamount 8)data                   |
-|                                     |                 | makeBid                                | 1)Nft contract address 2)Tokenid 2)BidPrice                                                                          |
-|                                     |                 | settleAuction                          | 1)\_nftContractAddress 2)\_tokenId:                                                                                  |
-|                                     |                 | updateTheBidPrice                      | 1)nft contract address 2)tokenid 3)updateBid price                                                                   |
-|                                     |                 |                                        |                                                                                                                      |
-|                                     |                 | withdrawBid                            | 1)Nft Contract address 2)Token id                                                                                    |
-|                                     |                 | getFixedSale                           |                                                                                                                      |
-|                                     |                 | getNftAuctionSaleDetails               | 1)\_nftContractAddress2)\_tokenId:                                                                                   |
-|                                     |                 | nftSaleStatus                          | 1)Address 2)units                                                                                                    |
-|                                     | 1155            | userBidPriceOnNFT                      | 1)Address2)units3)Address                                                                                            |
-|                                     |                 | IID\_IERC1155                          |                                                                                                                      |
-|                                     |                 | isERC1155                              | \_nftContractAddress:                                                                                                |
-|                                     |                 | onERC1155BatchReceived                 | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                                      |
-|                                     |                 | onERC1155Received                      | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                                      |
+|                                     |                 | settleAuction                          |                                                         | 
+|   |                 | updateTheBidPrice        | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>                                      |                                                             |  |  |  |  |  |  |  |  |  |
+| - | --------------- | ------------------------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |  |  |  |  |  |  |  |  |  |
+|   |                 | withdrawBid              | 1)\_nftContractAddress: 2) \_tokenId:<br>                                                          |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | getFixedSale             | 1) \_nftContractAddress:2)\_tokenId:<br>                                                           |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | getNftAuctionSaleDetails | 1)\_nftContractAddress2)\_tokenId:                                                                 |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | nftSaleStatus            | 1)Address 2)units                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | userBidPriceOnNFT        | 1)Address2)units3)Address                                                                          |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 |                          |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
+| 5 | NFT Market 1155 | buyFromFixedSale         | 1)nft contract address 2)tokenid 3)amount 4)NftAmount5)data                                        |                                                             |  |  |  |  |  |  |  |  |
+|   |                 | cancelFixedsale          | 1)nft contract address 2)tokenid 3)amount 4))data                                                  |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | nftFixedSale             | 1)nft contract address 2)ERC20 3)tokenid 4)amount 5)SalePrice5)data                                |                                                             |  |  |  |  |  |  |  |
+|   |                 | updateFixedSalePrice     | 1)nft contact address 2)token id 3) updated sale price                                             |                                                             |  |  |  |  |  |  |  |  |
+|   |                 | nftSaleStatus            | 1)address2)amount                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | onERC721Received         | 1)address2)address3)unit4)bytes                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | \_cancelAuctionSale      | 1)\_nftContractAddress: 2) \_tokenId:                                                              |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | createNftAuctionSale     | 1)nft contract address 2)ERC20 3)Tokenid 4)auctionStart 5)AuctionEnd 6)MinPrice 7)Nftamount 8)data | 1)nft contract address 2)tokenid 3)amount 4)NftAmount5)data |
+|   |                 | makeBid                  | 1)Nft contract address 2)Tokenid 2)BidPrice                                                        |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | settleAuction            | 1)\_nftContractAddress 2)\_tokenId:                                                                |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | updateTheBidPrice        | 1)nft contract address 2)tokenid 3)updateBid price                                                 |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 |                          |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | withdrawBid              | 1)Nft Contract address 2)Token id                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | getFixedSale             |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | getNftAuctionSaleDetails | 1)\_nftContractAddress2)\_tokenId:                                                                 |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | nftSaleStatus            | 1)Address 2)units                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
+|   | 1155            | userBidPriceOnNFT        | 1)Address2)units3)Address                                                                          |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | IID\_IERC1155            |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | isERC1155                | \_nftContractAddress:                                                                              |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | onERC1155BatchReceived   | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |                 | onERC1155Received        | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
+|   |           |                       |                                                      |
+| - | --------- | --------------------- | ---------------------------------------------------- |
+| 6 | Lazy mint | Approve               | 1)address 2toeknid                                   |
+|   |           | grantRole             | 1)role 2)Account                                     |
+|   |           | redeem                | 1)Reedeemer 2)v units 3)r bytes 4)s bytes 5) voucher |
+|   |           | renounceRole          | 1) role 2) account address                           |
+|   |           | revokeRole            | 1) role 2) account address                           |
+|   |           | safeTransferFrom      | 1)from address 2) to address 3)tokenid               |
+|   |           | safeTransferFrom      | 1)from address 2) to address 3)tokenid 4)data        |
+|   |           | setApproveforAll      | 1st - operator adddress ,2nd Approve bool            |
+|   |           | TransferFrom          | 1st From -address 2nd -To Address 3rd -tokenid       |
+|   |           | withdraw              |                                                      |
+|   |           | available to withdraw |                                                      |
+|   |           | balanceOf             | owner address                                        |
+|   |           | chainid               |                                                      |
+|   |           | Default admin role    |                                                      |
+|   |           | get approved          | token id                                             |
+|   |           | get chain id          |                                                      |
+|   |           | getRoleAdimin         | role                                                 |
+|   |           | hasRole               | 1) role 2) account address                           |
+|   |           | ISApproveforAll       | 1)owner 2)operator                                   |
+|   |           | Minter role           |                                                      |
+|   |           | Owner of              | token id                                             |
+|   |           | supportsinferface     |                                                      |
+|   |           | tokenuri              |                                                      |
 
 |   |                 | updateTheBidPrice        | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>                                      |                                                             |  |  |  |  |  |  |  |  |  |
 | - | --------------- | ------------------------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |  |  |  |  |  |  |  |  |  |
