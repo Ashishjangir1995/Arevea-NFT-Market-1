@@ -35,120 +35,125 @@ Both Single and Multiple has Separate Marketplace to buy sell and trade nft in m
 
 Lazy minting is different where the NFT is once minted all creatrion and transaction cost of Blockchain is burn by the buyer itself. 
 
-| 1) Srial no                         | contract        | function                               | parameter                                                                                                            |
-| ----------------------------------- | --------------- | -------------------------------------- | -------------------------------------------------------------------------------------------------------------------- |
-| 1                                   | 721 SINGLE-NFT | approve                                | 1st - Contract adress , 2nd tokenid                                                                                  |
-|                                     |                 | Burn                                   | tokenid                                                                                                              |
-|                                     |                 | createNFT                              | 1st -TokenURI , 2nd Fee                                                                                              |
-|                                     |                 | safeTransferFrom                       | 1st From -address 2nd -To Address 3rd -tokenid                                                                       |
-|                                     |                 | safeTransferFrom                       | 1st From -address 2nd -To Address 3rd -tokenid 4th data                                                              |
-|                                     |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                                            |
-|                                     |                 | setBaseURI                             | 1st Base uri                                                                                                         |
-|                                     |                 | TransferFrom                           | 1st From -address 2nd -To Address 3rd -tokenid                                                                       |
-|                                     |                 | TransferOwnsership                     | New owner address                                                                                                    |
-|                                     |                 |                                        |                                                                                                                      |
-|                                     |                 | Balance of address of owner and others |
-|                                     |                 | GetApproved                            | tokenid                                                                                                              |
-|                                     |                 | GetCreator                             | tokenid                                                                                                              |
-|                                     |                 | ISApproveforAll                        | 1st - operator adddress ,2nd Approve bool                                                                            |
-|                                     |                 | ownerof                                | tokenid                                                                                                              |
-|                                     |                 | royaltyfee                             | tokenid                                                                                                              |
-|                                     |                 | supportsinterface                      | byres4                                                                                                               |
-|                                     |                 | tokenbyIndex                           | index                                                                                                                |
-|                                     |                 | tokenbyownerbyindex                    | owner index                                                                                                          |
-|                                     |                 | tokenURI                               | tokenid                                                                                                              |
-|                                     |                 |                                        |                                                                                                                      |
-| 2                                   | 1155 MULTINFT      | burn                                   | 1)tokenid 2) supply in unit                                                                                          |
-|                                     |                 | burnBatch                              | 1)tokenid 2) amount                                                                                                  |
-|                                     |                 | createMultiple                         | 1)uri2)Supplier3)Fee in amount                                                                                       |
-|                                     |                 | safeBatchTransferFrom                  | 1)from address2)to address3) tokenid 4)amount 5)data                                                                 |
-|                                     |                 | safeBatchTransferFrom                  | 1)from address2)to address3) tokenid 4)amount 5)data                                                                 |
-|                                     |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                                            |
-|                                     |                 | setBaseURI                             | baseURI                                                                                                              |
-|                                     |                 | TransferOwnsership                     | New owner address                                                                                                    |
-|                                     |                 | balanceOf                              | 1)account 2) tokenid                                                                                                 |
-|                                     |                 | balanceOfBatch                         | 1)accunts 2)ids                                                                                                      |
-|                                     |                 | getCreator                             | tokenid                                                                                                              |
-|                                     |                 | ISApproveforAll                        |                                                                                                                      |
-|                                     |                 | Royaltyfee                             | tokenid                                                                                                              |
-|                                     |                 | supportsInterface                      | bytes                                                                                                                |
-|                                     |                 | tokenURI                               | tokenid                                                                                                              |
-|                                     |                 |                                        |                                                                                                                      |
-| 3                                   | ERC20           | approve                                | 1)spender address 2) amount                                                                                          |
-|                                     |                 | burn                                   | 1)amount                                                                                                             |
-|                                     |                 | burnfrom                               | 1)address2)amount                                                                                                    |
-|                                     |                 | decreaseAllowance                      | 1)spender address 2) substractedValue                                                                                |
-|                                     |                 | increaseAllowance                      | 1)spender2)AddedValue                                                                                                |
-|                                     |                 | mint                                   | 1)account 2)amount                                                                                                   |
-|                                     |                 | renounce owner                         | to cancel ownership                                                                                                  |
-|                                     |                 | transfer                               | 1)to address 2)amount                                                                                                |
-|                                     |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                                            |
-|                                     |                 | transferOwnership                      | New owner address                                                                                                    |
-|                                     |                 | allowance                              | 1)owner 2)spender                                                                                                    |
-|                                     |                 | balancof                               | accont address                                                                                                       |
-| 4                                   | NFT Market 721  | buyFromFixedSale                       | 1)nft contract address 2)tokenid 3)amount                                                                            |
-|                                     |                 | cancelFixedsale                        | 1)nft contract address 2)tokenid                                                                                     |
-|                                     |                 | nftFixedSale                           | 1)nft contract address 2)erc20 3)tokenid 4)saleprice                                                                 |
-|                                     |                 | updateFixedSalePrice                   | 1)nft contact address 2)token id 3) updated sale price                                                               |
-|                                     |                 | nftSaleStatus                          | 1)address2)amount                                                                                                    |
-|                                     |                 | onERC721Received                       | 1)address2)address3)unit4)bytes                                                                                      |
-|                                     |                 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                                |
-|                                     |                 | createNftAuctionSale                   | 1) \_nftContractAddress: 2) \_erc20: Address 3)\_tokenId: 4)\_auctionStart5) \_auctionEnd:<br>6\_minPrice:<br><br>   |
-|                                     |                 | makeBid                                | 1)\_nftContractAddress:2) \_tokenId:<br>3)\_bidPrice                                                                 |
-|                                     |                 | settleAuction                          |      1)_nftContractAddress 2)_tokenId:                                                   | 
-|   |                 | updateTheBidPrice        | 1)\_nftContractAddress: 2) \_tokenId:3) \_updateBidPrice:<br>                                      |                                                             |  |  |  |  |  |  |  |  |  |
-| - | --------------- | ------------------------ | -------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- |  |  |  |  |  |  |  |  |  |
-|   |                 | withdrawBid              | 1)\_nftContractAddress: 2) \_tokenId:<br>                                                          |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | getFixedSale             | 1) \_nftContractAddress:2)\_tokenId:<br>                                                           |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | getNftAuctionSaleDetails | 1)\_nftContractAddress2)\_tokenId:                                                                 |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | nftSaleStatus            | 1)Address 2)units                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | userBidPriceOnNFT        | 1)Address2)units3)Address                                                                          |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 |                          |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
-| 5 | NFT Market 1155 | buyFromFixedSale         | 1)nft contract address 2)tokenid 3)amount 4)NftAmount5)data                                        |                                                             |  |  |  |  |  |  |  |  |
-|   |                 | cancelFixedsale          | 1)nft contract address 2)tokenid 3)amount 4))data                                                  |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | nftFixedSale             | 1)nft contract address 2)ERC20 3)tokenid 4)amount 5)SalePrice5)data                                |                                                             |  |  |  |  |  |  |  |
-|   |                 | updateFixedSalePrice     | 1)nft contact address 2)token id 3) updated sale price                                             |                                                             |  |  |  |  |  |  |  |  |
-|   |                 | nftSaleStatus            | 1)address2)amount                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | onERC721Received         | 1)address2)address3)unit4)bytes                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | \_cancelAuctionSale      | 1)\_nftContractAddress: 2) \_tokenId:                                                              |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | createNftAuctionSale     | 1)nft contract address 2)ERC20 3)Tokenid 4)auctionStart 5)AuctionEnd 6)MinPrice 7)Nftamount 8)data | 1)nft contract address 2)tokenid 3)amount 4)NftAmount5)data |
-|   |                 | makeBid                  | 1)Nft contract address 2)Tokenid 2)BidPrice                                                        |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | settleAuction            | 1)\_nftContractAddress 2)\_tokenId:                                                                |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | updateTheBidPrice        | 1)nft contract address 2)tokenid 3)updateBid price                                                 |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 |                          |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | withdrawBid              | 1)Nft Contract address 2)Token id                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | getFixedSale             |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | getNftAuctionSaleDetails | 1)\_nftContractAddress2)\_tokenId:                                                                 |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | nftSaleStatus            | 1)Address 2)units                                                                                  |                                                             |  |  |  |  |  |  |  |  |  |
-|   | 1155            | userBidPriceOnNFT        | 1)Address2)units3)Address                                                                          |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | IID\_IERC1155            |                                                                                                    |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | isERC1155                | \_nftContractAddress:                                                                              |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | onERC1155BatchReceived   | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
-|   |                 | onERC1155Received        | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                    |                                                             |  |  |  |  |  |  |  |  |  |
-| Lazy mint | Approve               | 1)address 2toeknid                                   |
-| --------- | --------------------- | ---------------------------------------------------- |
-|           | grantRole             | 1)role 2)Account                                     |
-|           | redeem                | 1)Reedeemer 2)v units 3)r bytes 4)s bytes 5) voucher |
-|           | renounceRole          | 1) role 2) account address                           |
-|           | revokeRole            | 1) role 2) account address                           |
-|           | safeTransferFrom      | 1)from address 2) to address 3)tokenid               |
-|           | safeTransferFrom      | 1)from address 2) to address 3)tokenid 4)data        |
-|           | setApproveforAll      | 1st - operator adddress ,2nd Approve bool            |
-|           | TransferFrom          | 1st From -address 2nd -To Address 3rd -tokenid       |
-|           | withdraw              |                                                      |
-|           | available to withdraw |                                                      |
-|           | balanceOf             | owner address                                        |
-|           | chainid               |                                                      |
-|           | Default admin role    |                                                      |
-|           | get approved          | token id                                             |
-|           | get chain id          |                                                      |
-|           | getRoleAdimin         | role                                                 |
-|           | hasRole               | 1) role 2) account address                           |
-|           | ISApproveforAll       | 1)owner 2)operator                                   |
-|           | Minter role           |                                                      |
-|           | Owner of              | token id                                             |
-|           | supportsinferface     | interfaceId                                          |
-|           | tokenuri              | token id                                             |
+| 1) Srial no | contract        | function                               | parameter input                                                                                        |
+| ----------- | --------------- | -------------------------------------- | ------------------------------------------------------------------------------------------------------ |
+| 1           | ERC721          | approve                                | 1st - Contract adress , 2nd tokenid                                                                    |
+|             |                 | Burn                                   | tokenid                                                                                                |
+|             |                 | createNFT                              | 1st -TokenURI , 2nd Fee                                                                                |
+|             |                 | safeTransferFrom                       | 1st From -address 2nd -To Address 3rd -tokenid                                                         |
+|             |                 | safeTransferFrom                       | 1st From -address 2nd -To Address 3rd -tokenid 4th data                                                |
+|             |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                              |
+|             |                 | setBaseURI                             | 1st Base uri                                                                                           |
+|             |                 | TransferFrom                           | 1st From -address 2nd -To Address 3rd -tokenid                                                         |
+|             |                 | TransferOwnsership                     | New owner address                                                                                      |
+|             |                 |                                        |                                                                                                        |
+|             |                 | Balance of address of owner and others |
+|             |                 | GetApproved                            | tokenid                                                                                                |
+|             |                 | GetCreator                             | tokenid                                                                                                |
+|             |                 | ISApproveforAll                        | 1st - operator adddress ,2nd Approve bool                                                              |
+|             |                 | ownerof                                | tokenid                                                                                                |
+|             |                 | royaltyfee                             | tokenid                                                                                                |
+|             |                 | supportsinterface                      | byres4                                                                                                 |
+|             |                 | tokenbyIndex                           | index                                                                                                  |
+|             |                 | tokenbyownerbyindex                    | owner index                                                                                            |
+|             |                 | tokenURI                               | tokenid                                                                                                |
+|             |                 |                                        |                                                                                                        |
+| 2           | ERC1155         | burn                                   | 1)tokenid 2) supply in unit                                                                            |
+|             |                 | burnBatch                              | 1)tokenid 2) amount                                                                                    |
+|             |                 | createMultiple                         | 1)uri2)Supplier3)Fee in amount                                                                         |
+|             |                 | safeBatchTransferFrom                  | 1)from address2)to address3) tokenid 4)amount 5)data                                                   |
+|             |                 | safeBatchTransferFrom                  | 1)from address2)to address3) tokenid 4)amount 5)data                                                   |
+|             |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                              |
+|             |                 | setBaseURI                             | baseURI                                                                                                |
+|             |                 | TransferOwnsership                     | New owner address                                                                                      |
+|             |                 | balanceOf                              | 1)account 2) tokenid                                                                                   |
+|             |                 | balanceOfBatch                         | 1)accunts 2)ids                                                                                        |
+|             |                 | getCreator                             | tokenid                                                                                                |
+|             |                 | ISApproveforAll                        |                                                                                                        |
+|             |                 | Royaltyfee                             | tokenid                                                                                                |
+|             |                 | supportsInterface                      | bytes                                                                                                  |
+|             |                 | tokenURI                               | tokenid                                                                                                |
+|             |                 |                                        |                                                                                                        |
+| 3           | ERC20           | approve                                | 1)spender address 2) amount                                                                            |
+|             |                 | burn                                   | 1)amount                                                                                               |
+|             |                 | burnfrom                               | 1)address2)amount                                                                                      |
+|             |                 | decreaseAllowance                      | 1)spender address 2) substractedValue                                                                  |
+|             |                 | increaseAllowance                      | 1)spender2)AddedValue                                                                                  |
+|             |                 | mint                                   | 1)account 2)amount                                                                                     |
+|             |                 | renounce owner                         | to cancel ownership                                                                                    |
+|             |                 | transfer                               | 1)to address 2)amount                                                                                  |
+|             |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                              |
+|             |                 | transferOwnership                      | New owner address                                                                                      |
+|             |                 | allowance                              | 1)owner 2)spender                                                                                      |
+|             |                 | balancof                               | accont address                                                                                         |
+| 4           | NFT Market 721  |                                        |                                                                                                        |
+|             |                 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                  |
+|             |                 | buyAreveaToken                         | 1)\_erc20\_contract:2)\_buyer:3)\_amount:                                                              |
+|             |                 | buyFromFixedSale                       | 1)nft contract address 2)tokenid 3)amount                                                              |
+|             |                 | cancelFixedsale                        | 1)nft contract address 2)tokenid                                                                       |
+|             |                 | createNftAuctionSale                   | 1) \_nftContractAddress: 2) \_erc20: Address 3)\_tokenId: 4)\_auctionStart5) \_auctionEnd:6\_minPrice: |
+|             |                 | makeBid                                | 1)\_nftContractAddress:2) \_tokenId:3)\_bidPrice                                                       |
+|             |                 | nftFixedSale                           | 1)nft contract address 2)erc20 3)tokenid 4)saleprice                                                   |
+|             |                 | Sell\_AreveaToken                      | 1)\_erc20\_contract:2)\_buyer:3)\_amount:                                                              |
+|             |                 | settleAuction                          | 1)\_nftContractAddress 2)\_tokenId:                                                                    |
+|             |                 | updateFixedSalePrice                   | 1)nft contact address 2)token id 3) updated sale price                                                 |
+|             |                 | updateTheBidPrice                      | 1)updateTheBidPrice2) \_tokenId:3)\_updateBidPrice:                                                    |
+|             |                 | nftSaleStatus                          | 1)address2)amount                                                                                      |
+|             |                 | withdrawBid                            | 1)Nft Contract address 2)Token id                                                                      |
+|             |                 | getAuctionSaleNFT                      |                                                                                                        |
+|             |                 | getFixedSale                           | 1)Nft Contract address 2)Token id                                                                      |
+|             |                 | getNftAuctionSaleDetails               | 1)\_nftContractAddress2)\_tokenId:                                                                     |
+|             |                 | onERC721Received                       | 1)address2)address3)unit4)bytes                                                                        |
+|             |                 | userBidPriceOnNFT                      | 1)Address2)units3)Address                                                                              |
+| 5           | NFT Market 1155 | \_cancelAuctionSale                    | 1)\_nftContractAddress: 2) \_tokenId:                                                                  |
+|             |                 | buyAreveaToken                         | 1)\_erc20\_contract:2)\_buyer:3)\_amount:                                                              |
+|             |                 | buyFromFixedSale                       | 1)nft contract address 2)tokenid 3)amount                                                              |
+|             |                 | cancelFixedsale                        | 1)nft contract address 2)tokenid                                                                       |
+|             |                 | createNftAuctionSale                   | 1)nft contract address 2)ERC20 3)Tokenid 4)auctionStart 5)AuctionEnd 6)MinPrice 7)Nftamount 8)data     |
+|             |                 | makeBid                                | 1)\_nftContractAddress:2) \_tokenId:3)\_bidPrice                                                       |
+|             |                 | nftFixedSale                           | 1)nft contract address 2)erc20 3)tokenid 4)saleprice                                                   |
+|             |                 | Sell\_AreveaToken                      | 1)\_erc20\_contract:2)\_buyer:3)\_amount:                                                              |
+|             |                 | settleAuction                          | 1)\_nftContractAddress 2)\_tokenId:                                                                    |
+|             |                 | updateFixedSalePrice                   | 1)nft contact address 2)token id 3) updated sale price                                                 |
+|             |                 | updateTheBidPrice                      | 1)updateTheBidPrice2) \_tokenId:3)\_updateBidPrice:                                                    |
+|             |                 | withdrawBid                            | 1)Nft Contract address 2)Token id                                                                      |
+|             |                 | nftSaleStatus                          | 1)address2)amount                                                                                      |
+|             |                 | getAuctionSaleNFT                      |                                                                                                        |
+|             |                 | getFixedSale                           | 1)Nft Contract address 2)Token id                                                                      |
+|             |                 | getFixedSaleNFT                        |                                                                                                        |
+|             |                 | getNftAuctionSaleDetails               | 1)\_nftContractAddress2)\_tokenId:                                                                     |
+|             |                 | IID\_IERC1155                          |                                                                                                        |
+|             |                 | isERC1155                              | \_nftContractAddress:                                                                                  |
+|             |                 | nftSaleStatus                          | 1)Address2)uint                                                                                        |
+|             |                 | onERC1155BatchReceived                 | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                        |
+|             |                 | onERC1155Received                      | 1)Operator address 2) from address 3)ids 4\_values 5)data bytes                                        |
+|             |                 |                                        |                                                                                                        |
+|             |                 | userBidPriceOnNFT                      | 1)Address2)units3)Address                                                                              |
+| 5           | Lazy mint       | Approve                                | 1)address 2toeknid                                                                                     |
+|             |                 | grantRole                              | 1)role 2)Account                                                                                       |
+|             |                 | redeem                                 | 1)Reedeemer 2)v units 3)r bytes 4)s bytes 5) voucher                                                   |
+|             |                 | renounceRole                           | 1) role 2) account address                                                                             |
+|             |                 | revokeRole                             | 1) role 2) account address                                                                             |
+|             |                 | safeTransferFrom                       | 1)from address 2) to address 3)tokenid                                                                 |
+|             |                 | safeTransferFrom                       | 1)from address 2) to address 3)tokenid 4)data                                                          |
+|             |                 | setApproveforAll                       | 1st - operator adddress ,2nd Approve bool                                                              |
+|             |                 | TransferFrom                           | 1st From -address 2nd -To Address 3rd -tokenid                                                         |
+|             |                 | withdraw                               |                                                                                                        |
+|             |                 | available to withdraw                  |                                                                                                        |
+|             |                 | balanceOf                              | owner address                                                                                          |
+|             |                 | chainid                                |                                                                                                        |
+|             |                 | Default admin role                     |                                                                                                        |
+|             |                 | get approved                           | token id                                                                                               |
+|             |                 | get chain id                           |                                                                                                        |
+|             |                 | getRoleAdimin                          | role                                                                                                   |
+|             |                 | hasRole                                | 1) role 2) account address                                                                             |
+|             |                 | ISApproveforAll                        | 1)owner 2)operator                                                                                     |
+|             |                 | Minter role                            |                                                                                                        |
+|             |                 | Owner of                               | token id                                                                                               |
+|             |                 | Name                                   |                                                                                                        |
+|             |                 | supportsInterface                      | interfaceId                                                                                            |
+|             |                 | symbol                                 |                                                                                                        |
+|             |                 | tokenURI                               | token id                                                                                               |
 
 Sources and Address:<br>
 

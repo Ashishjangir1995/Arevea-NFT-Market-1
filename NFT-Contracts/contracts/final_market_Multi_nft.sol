@@ -76,7 +76,7 @@ contract NFTMultiMarketplace {
         uint256 tokenId,
         uint256 updateSalePrice
     );
-    );
+
     //Event NftBuyFromFixedSale
     event NftBuyFromFixedSale(
         address nftContractAddress,

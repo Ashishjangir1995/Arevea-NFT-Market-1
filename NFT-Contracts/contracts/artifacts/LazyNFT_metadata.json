@@ -449,7 +449,7 @@
 								"type": "bytes"
 							}
 						],
-						"internalType": "struct LazyNFT.Permit",
+						"internalType": "struct LazyNFT.NFTVoucher",
 						"name": "voucher",
 						"type": "tuple"
 					}
@@ -685,7 +685,7 @@
 				"redeem(address,uint8,bytes32,bytes32,(uint256,uint256,string,bytes))": {
 					"params": {
 						"redeemer": "The address of the account which will receive the NFT upon success.",
-						"voucher": "A signed Permit that describes the NFT to be redeemed."
+						"voucher": "A signed NFTVoucher that describes the NFT to be redeemed."
 					}
 				},
 				"renounceRole(bytes32,address)": {
@@ -722,7 +722,7 @@
 					"notice": "Retuns the amount of Ether available to the caller to withdraw."
 				},
 				"redeem(address,uint8,bytes32,bytes32,(uint256,uint256,string,bytes))": {
-					"notice": "Redeems an Permit for an actual NFT, creating it in the process."
+					"notice": "Redeems an NFTVoucher for an actual NFT, creating it in the process."
 				},
 				"withdraw()": {
 					"notice": "Transfers all pending withdrawal balance to the caller. Reverts if the caller is not an authorized minter."
@@ -733,7 +733,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"NFT-Contracts/contracts/LazyNFT.sol": "LazyNFT"
+			"Arevea-NFT-Market/NFT-Contracts/contracts/lazymint.sol": "LazyNFT"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -859,12 +859,12 @@
 				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
 			]
 		},
-		"NFT-Contracts/contracts/LazyNFT.sol": {
-			"keccak256": "0x5308aeb6c1bd1fc2c7f9f005af2622a4de721b91cd98788a35a11394d1364d11",
+		"Arevea-NFT-Market/NFT-Contracts/contracts/lazymint.sol": {
+			"keccak256": "0xf2ac9790d406d16746bd7d73a612cfff4940497a23325ee7c3ab33cb8d90dc1a",
 			"license": "Unlicense",
 			"urls": [
-				"bzz-raw://332957fad822258f8d64c2857a90af66772567805a6907fec7832d00a18ea3b2",
-				"dweb:/ipfs/QmVNUk9MHURVnnj4Wcq4LRzL5MN21ApDpJF5E3FsJKodfV"
+				"bzz-raw://ea4074344961e90f542e57df03ea8b59a50d8aab39ab520b88ac58e8cd940044",
+				"dweb:/ipfs/QmRWvebygDvCBr8fV1xvpgwGpN1aY8g4CgfzCMN7X57hDD"
 			]
 		}
 	},
