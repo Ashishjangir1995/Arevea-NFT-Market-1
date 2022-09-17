@@ -154,6 +154,10 @@ Lazy minting is different where the NFT is once minted all creatrion and transac
 |             |                 | supportsInterface                      | interfaceId                                                                                            |
 |             |                 | symbol                                 |                                                                                                        |
 |             |                 | tokenURI                               | token id                                                                                               |
+
+
+
+
 Sources and Address:<br>
 
 AreveaToken, SingleNFT &amp; Multiple NFT with Market and Bid functions 
