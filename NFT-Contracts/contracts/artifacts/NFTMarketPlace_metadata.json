@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.17+commit.8df45f5f"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -362,6 +362,35 @@
 				"inputs": [
 					{
 						"internalType": "address",
+						"name": "_erc20_contract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "seller",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "Sell_AreveaToken",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
 						"name": "_nftContractAddress",
 						"type": "address"
 					},
@@ -373,6 +402,35 @@
 				],
 				"name": "_cancelAuctionSale",
 				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_erc20_contract",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_buyer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
+					}
+				],
+				"name": "buyAreveaToken",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
@@ -905,11 +963,11 @@
 			]
 		},
 		"Arevea-NFT-Market/NFT-Contracts/contracts/finalMarket_single.sol": {
-			"keccak256": "0x66f5877722d6b067524dc94fbf9cfc6b57b9a0a59d4d3a13ff0c563e9dd29eab",
+			"keccak256": "0x7a5158c45dd09e106fd8b8ff2237e165b0a132227ff6669895e909ebd5246030",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://ecbd5c1b30d880d06d6abd0db971dd9356612daf9405854ae23d63838d2bd001",
-				"dweb:/ipfs/QmPffKBasxsSxFV6vuGunD63TYNCEFTb1M4AySsGyEwgeC"
+				"bzz-raw://ea087bf3c6a102ae303a9b594e635f2b6a829010394232da5318541eaebf30df",
+				"dweb:/ipfs/QmW1EavKBJkPTqQjxcv9ADgcVj5MFRzW1rmDHfEvNxYzTb"
 			]
 		}
 	},
