@@ -399,7 +399,8 @@ contract NFTMarketplace {
         _isTokenOrCoin(
             nftContractFixedSale[_nftContractAddress][_tokenId].nftSeller,
             nftContractFixedSale[_nftContractAddress][_tokenId].erc20,
-            nftContractFixedSale[_nftContractAddress][_tokenId].salePrice
+            nftContractFixedSale[_nftContractAddress][_tokenId].salePrice,
+            false
         );
 
         emit NftBuyFromFixedSale(
@@ -409,7 +410,22 @@ contract NFTMarketplace {
             _amount
         );
     }
+    // Token buy and sell 
+    //Function to buyAreveaToken from Arevea token owner a required amount 
+    function buyAreveaToken(address _erc20_contract, address _buyer, uint256 _amount) public returns (bool){
+      address  ERC20_contract= _erc20_contract;
+      IERC20(ERC20_contract).transferFrom(0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c,_buyer, _amount);
+    return(true);
 
+   }
+   //Function to SellAreveaToken 
+    function Sell_AreveaToken(address _erc20_contract, address seller, uint256 _amount) public returns (bool){
+      address  ERC20_contract= _erc20_contract;
+      IERC20(ERC20_contract).transferFrom(seller, 0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c, _amount);
+      return(true);
+
+   }
+ 
     // NFT AUCTION SALE
 
     function createNftAuctionSale(
@@ -661,7 +677,8 @@ contract NFTMarketplace {
         _isTokenOrCoin(
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller,
             nftContractAuctionSale[_nftContractAddress][_tokenId].erc20,
-            _bidPrice
+            _bidPrice,
+            true
         );
     }
 
@@ -714,10 +731,15 @@ contract NFTMarketplace {
     function _isTokenOrCoin(
         address _nftSeller,
         address _erc20,
-        uint256 _buyAmount
+        uint256 _buyAmount,
+        bool auction
     ) internal {
         if (_erc20 != address(0)) {
-            _tokenAmountTransfer(_nftSeller, _erc20, _buyAmount);
+            if (auction) {
+                IERC20(_erc20).transfer(_nftSeller, _buyAmount);
+            } else {
+                _tokenAmountTransfer(_nftSeller, _erc20, _buyAmount);
+            }
         } else {
             _nativeAmountTransfer(_nftSeller, _buyAmount);
         }
