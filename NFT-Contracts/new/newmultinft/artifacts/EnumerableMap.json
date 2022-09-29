@@ -1,0 +1,102 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60566050600b82828239805160001a6073146043577f4e487b7100000000000000000000000000000000000000000000000000000000600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c21b49a10b390e714fa66bf1ebbcb2d89e8888f0a695b5c8257e51fa25be985764736f6c63430008070033",
+			"opcodes": "PUSH1 0x56 PUSH1 0x50 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x43 JUMPI PUSH32 0x4E487B7100000000000000000000000000000000000000000000000000000000 PUSH1 0x0 MSTORE PUSH1 0x0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC2 SHL 0x49 LOG1 SIGNEXTEND CODECOPY 0xE PUSH18 0x4FA66BF1EBBCB2D89E8888F0A695B5C8257E MLOAD STATICCALL 0x25 0xBE SWAP9 JUMPI PUSH5 0x736F6C6343 STOP ADDMOD SMOD STOP CALLER ",
+			"sourceMap": "1668:16285:0:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "73000000000000000000000000000000000000000030146080604052600080fdfea2646970667358221220c21b49a10b390e714fa66bf1ebbcb2d89e8888f0a695b5c8257e51fa25be985764736f6c63430008070033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 0xC2 SHL 0x49 LOG1 SIGNEXTEND CODECOPY 0xE PUSH18 0x4FA66BF1EBBCB2D89E8888F0A695B5C8257E MLOAD STATICCALL 0x25 0xBE SWAP9 JUMPI PUSH5 0x736F6C6343 STOP ADDMOD SMOD STOP CALLER ",
+			"sourceMap": "1668:16285:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17200",
+				"executionCost": "97",
+				"totalCost": "17297"
+			},
+			"internal": {
+				"at(struct EnumerableMap.AddressToUintMap storage pointer,uint256)": "infinite",
+				"at(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,uint256)": "infinite",
+				"at(struct EnumerableMap.Bytes32ToUintMap storage pointer,uint256)": "infinite",
+				"at(struct EnumerableMap.UintToAddressMap storage pointer,uint256)": "infinite",
+				"at(struct EnumerableMap.UintToUintMap storage pointer,uint256)": "infinite",
+				"contains(struct EnumerableMap.AddressToUintMap storage pointer,address)": "infinite",
+				"contains(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32)": "infinite",
+				"contains(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32)": "infinite",
+				"contains(struct EnumerableMap.UintToAddressMap storage pointer,uint256)": "infinite",
+				"contains(struct EnumerableMap.UintToUintMap storage pointer,uint256)": "infinite",
+				"get(struct EnumerableMap.AddressToUintMap storage pointer,address)": "infinite",
+				"get(struct EnumerableMap.AddressToUintMap storage pointer,address,string memory)": "infinite",
+				"get(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32)": "infinite",
+				"get(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32,string memory)": "infinite",
+				"get(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32)": "infinite",
+				"get(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32,string memory)": "infinite",
+				"get(struct EnumerableMap.UintToAddressMap storage pointer,uint256)": "infinite",
+				"get(struct EnumerableMap.UintToAddressMap storage pointer,uint256,string memory)": "infinite",
+				"get(struct EnumerableMap.UintToUintMap storage pointer,uint256)": "infinite",
+				"get(struct EnumerableMap.UintToUintMap storage pointer,uint256,string memory)": "infinite",
+				"length(struct EnumerableMap.AddressToUintMap storage pointer)": "infinite",
+				"length(struct EnumerableMap.Bytes32ToBytes32Map storage pointer)": "infinite",
+				"length(struct EnumerableMap.Bytes32ToUintMap storage pointer)": "infinite",
+				"length(struct EnumerableMap.UintToAddressMap storage pointer)": "infinite",
+				"length(struct EnumerableMap.UintToUintMap storage pointer)": "infinite",
+				"remove(struct EnumerableMap.AddressToUintMap storage pointer,address)": "infinite",
+				"remove(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32)": "infinite",
+				"remove(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32)": "infinite",
+				"remove(struct EnumerableMap.UintToAddressMap storage pointer,uint256)": "infinite",
+				"remove(struct EnumerableMap.UintToUintMap storage pointer,uint256)": "infinite",
+				"set(struct EnumerableMap.AddressToUintMap storage pointer,address,uint256)": "infinite",
+				"set(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32,bytes32)": "infinite",
+				"set(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32,uint256)": "infinite",
+				"set(struct EnumerableMap.UintToAddressMap storage pointer,uint256,address)": "infinite",
+				"set(struct EnumerableMap.UintToUintMap storage pointer,uint256,uint256)": "infinite",
+				"tryGet(struct EnumerableMap.AddressToUintMap storage pointer,address)": "infinite",
+				"tryGet(struct EnumerableMap.Bytes32ToBytes32Map storage pointer,bytes32)": "infinite",
+				"tryGet(struct EnumerableMap.Bytes32ToUintMap storage pointer,bytes32)": "infinite",
+				"tryGet(struct EnumerableMap.UintToAddressMap storage pointer,uint256)": "infinite",
+				"tryGet(struct EnumerableMap.UintToUintMap storage pointer,uint256)": "infinite"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

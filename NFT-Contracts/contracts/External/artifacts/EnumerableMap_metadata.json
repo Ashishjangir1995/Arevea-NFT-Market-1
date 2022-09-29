@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.7+commit.e28d00a7"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Arevea-NFT-Market/NFT-Contracts/contracts/External/EnumerableMap.sol": "EnumerableMap"
+		},
+		"evmVersion": "london",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/External/EnumerableMap.sol": {
+			"keccak256": "0x3fa04da15ec8b6da6c026493ce01720cdcbbdf0c7a47c1e94be36f98673be0e1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e80830acf112bcd6ecd645f6a4ea5e9903491d93f0bb6d43e474449b5e57dacf",
+				"dweb:/ipfs/QmZRgjXjnhkLk786aPx95Hd2RDEYgeTyiERfjHYSXn3ri9"
+			]
+		}
+	},
+	"version": 1
+}

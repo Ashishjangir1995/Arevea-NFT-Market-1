@@ -1,71 +1,400 @@
 {
 	"compiler": {
-		"version": "0.8.7+commit.e28d00a7"
+		"version": "0.8.17+commit.8df45f5f"
 	},
 	"language": "Solidity",
 	"output": {
 		"abi": [
 			{
+				"anonymous": false,
 				"inputs": [
 					{
+						"indexed": false,
 						"internalType": "address",
-						"name": "NFTAddress",
+						"name": "nftContractAddress",
 						"type": "address"
 					},
 					{
-						"internalType": "address",
-						"name": "tokenAddress",
-						"type": "address"
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
 					},
 					{
+						"indexed": false,
 						"internalType": "address",
-						"name": "MultiNFTaddress",
+						"name": "nftSeller",
 						"type": "address"
 					}
 				],
-				"stateMutability": "nonpayable",
-				"type": "constructor"
+				"name": "CancelNftAuctionSale",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftSeller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "CancelNftFixedSale",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "finalBidPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftBidder",
+						"type": "address"
+					}
+				],
+				"name": "NftAuctionBidPriceUpdate",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftSeller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "erc20",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "auctionStart",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "auctionEnd",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "minPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "NftAuctionSale",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftHighestBidder",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nftHighestBid",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftSeller",
+						"type": "address"
+					}
+				],
+				"name": "NftAuctionSettle",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bidPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftBidder",
+						"type": "address"
+					}
+				],
+				"name": "NftBidPrice",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftBuyer",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "nftBuyPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "NftBuyFromFixedSale",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "updateBuyNowPrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftOwner",
+						"type": "address"
+					}
+				],
+				"name": "NftBuyNowPriceUpdate",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftSeller",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "erc20",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "salePrice",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "timeOfSale",
+						"type": "uint256"
+					}
+				],
+				"name": "NftFixedSale",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "updateSalePrice",
+						"type": "uint256"
+					}
+				],
+				"name": "NftFixedSalePriceUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "nftContractAddress",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "tokenId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "bidClaimer",
+						"type": "address"
+					}
+				],
+				"name": "withdrawNftBid",
+				"type": "event"
 			},
 			{
 				"inputs": [
 					{
-						"internalType": "uint256",
-						"name": "_tokenId",
-						"type": "uint256"
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
 					},
 					{
 						"internalType": "uint256",
-						"name": "qty",
+						"name": "_tokenId",
 						"type": "uint256"
 					}
 				],
-				"name": "MultiNFTBuy",
+				"name": "_cancelAuctionSale",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
-				"inputs": [],
-				"name": "contractaddress",
-				"outputs": [
+				"inputs": [
 					{
 						"internalType": "address",
-						"name": "",
+						"name": "_nftContractAddress",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
+					},
 					{
 						"internalType": "uint256",
 						"name": "_tokenId",
 						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_amount",
+						"type": "uint256"
 					}
 				],
-				"name": "nftBuy",
+				"name": "buyFromFixedSale",
 				"outputs": [],
 				"stateMutability": "payable",
 				"type": "function"
@@ -73,27 +402,17 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
 						"name": "_tokenId",
 						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "_tokenprice",
-						"type": "uint256"
-					},
-					{
-						"internalType": "uint256",
-						"name": "qty",
-						"type": "uint256"
-					},
-					{
-						"internalType": "bool",
-						"name": "forSale",
-						"type": "bool"
 					}
 				],
-				"name": "nftSale",
+				"name": "cancelFixedsale",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -101,17 +420,61 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_erc20",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
-						"name": "",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_auctionStart",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_auctionEnd",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_minPrice",
 						"type": "uint256"
 					}
 				],
-				"name": "tokenIdForSale",
+				"name": "createNftAuctionSale",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getAuctionSaleNFT",
 				"outputs": [
 					{
-						"internalType": "bool",
+						"components": [
+							{
+								"internalType": "address",
+								"name": "_nftContractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_tokenID",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct NFTMarketplace.SaleInfo[]",
 						"name": "",
-						"type": "bool"
+						"type": "tuple[]"
 					}
 				],
 				"stateMutability": "view",
@@ -120,12 +483,200 @@
 			{
 				"inputs": [
 					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getFixedSale",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "nftSeller",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "nftBuyer",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "erc20",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "salePrice",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct NFTMarketplace.FixedSale",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "getFixedSaleNFT",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "_nftContractAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "_tokenID",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct NFTMarketplace.SaleInfo[]",
+						"name": "",
+						"type": "tuple[]"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "getNftAuctionSaleDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "auctionStart",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "auctionEnd",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "minPrice",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "nftHighestBid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "nftHighestBidder",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "nftSeller",
+								"type": "address"
+							},
+							{
+								"internalType": "address",
+								"name": "erc20",
+								"type": "address"
+							}
+						],
+						"internalType": "struct NFTMarketplace.Auction",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_bidPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "makeBid",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_erc20",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_salePrice",
+						"type": "uint256"
+					}
+				],
+				"name": "nftFixedSale",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
 					}
 				],
-				"name": "tokenprice",
+				"name": "nftSaleStatus",
 				"outputs": [
 					{
 						"internalType": "uint256",
@@ -135,6 +686,155 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "from",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "onERC721Received",
+				"outputs": [
+					{
+						"internalType": "bytes4",
+						"name": "",
+						"type": "bytes4"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "settleAuction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_updateSalePrice",
+						"type": "uint256"
+					}
+				],
+				"name": "updateFixedSalePrice",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_updateBidPrice",
+						"type": "uint256"
+					}
+				],
+				"name": "updateTheBidPrice",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userBidPriceOnNFT",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_nftContractAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_tokenId",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawBid",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -150,7 +850,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"NFT-Contracts/contracts/market_place.sol": "NFTMarketPlace"
+			"Arevea-NFT-Market/NFT-Contracts/contracts/finalMarket_single.sol": "NFTMarketplace"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -164,204 +864,52 @@
 		"remappings": []
 	},
 	"sources": {
-		"NFT-Contracts/contracts/AREVEAToken.sol": {
-			"keccak256": "0xdad9960a4cf0db2347d4b66fab9ef71f4de82d9ef5130abc7710a85ae283df97",
+		"@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+			"keccak256": "0x9750c6b834f7b43000631af5cc30001c5f547b3ceb3635488f140f60e897ea6b",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://f5e9495f4ff70c1e8e554c46e4926918aa318f051bef8731a160dcf29619efd7",
-				"dweb:/ipfs/QmYCNATSwe9iNxt86bzMwuEUyzUnYQ4om2LtLo3dHCyFZk"
+				"bzz-raw://5a7d5b1ef5d8d5889ad2ed89d8619c09383b80b72ab226e0fe7bde1636481e34",
+				"dweb:/ipfs/QmebXWgtEfumQGBdVeM6c71McLixYXQP5Bk6kKXuoY4Bmr"
 			]
 		},
-		"NFT-Contracts/contracts/ERC1155.sol": {
-			"keccak256": "0xde0e6bb4a909dc322329458bf86255d974667e3e4773516564c9a5dc34b8000c",
+		"@openzeppelin/contracts/token/ERC721/IERC721.sol": {
+			"keccak256": "0xed6a749c5373af398105ce6ee3ac4763aa450ea7285d268c85d9eeca809cdb1f",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://dd0024e4ecfcb575e3e401c03885333af73e694449e1d486da0fb69db3a45fa7",
-				"dweb:/ipfs/QmPvCsvsTmKWpcCXQdZKjsXLowzXQuTnxQeevSo15y5va6"
+				"bzz-raw://20a97f891d06f0fe91560ea1a142aaa26fdd22bed1b51606b7d48f670deeb50f",
+				"dweb:/ipfs/QmTbCtZKChpaX5H2iRiTDMcSz29GSLCpTCDgJpcMR4wg8x"
 			]
 		},
-		"NFT-Contracts/contracts/ERC20.sol": {
-			"keccak256": "0x618fd2368aea00f5c27b8cd4f9600484b1d0320ed2967d46c04ba76eab2a21a3",
+		"@openzeppelin/contracts/token/ERC721/IERC721Receiver.sol": {
+			"keccak256": "0xa82b58eca1ee256be466e536706850163d2ec7821945abd6b4778cfb3bee37da",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://bc79740ba2a03c93594faff7f5a03d8ab4ea71240bf9685057f7ce20cea71ad6",
-				"dweb:/ipfs/QmZujg9EuN1UzncJ7cqmkZSidCpdygacQXJpPBHixxHA7p"
+				"bzz-raw://6e75cf83beb757b8855791088546b8337e9d4684e169400c20d44a515353b708",
+				"dweb:/ipfs/QmYvPafLfoquiDMEj7CKHtvbgHu7TJNPSVPSCjrtjV8HjV"
 			]
 		},
-		"NFT-Contracts/contracts/ERC721.sol": {
-			"keccak256": "0x994ccb6f6235537519c12b03c4e58cce972dd1a287ca682414d516cbd5871f06",
+		"@openzeppelin/contracts/utils/introspection/IERC165.sol": {
+			"keccak256": "0x447a5f3ddc18419d41ff92b3773fb86471b1db25773e07f877f548918a185bf1",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://65dce14a58079bb8cc9ded45d57ee032332e25771e44c7887efe904180c2907e",
-				"dweb:/ipfs/QmZvEtsJEgvmKb5qLY7ob9ghCMgAEzWYDhpHtwsKLghGtJ"
+				"bzz-raw://be161e54f24e5c6fae81a12db1a8ae87bc5ae1b0ddc805d82a1440a68455088f",
+				"dweb:/ipfs/QmP7C3CHdY9urF4dEMb9wmsp1wMxHF6nhA2yQE5SKiPAdy"
 			]
 		},
-		"NFT-Contracts/contracts/External/Address.sol": {
-			"keccak256": "0x2f46c1f29abceabf3044b58a58b21d6cbfa3cced4c50ef5bb5647f67ac825045",
+		"@openzeppelin/contracts/utils/math/SafeMath.sol": {
+			"keccak256": "0x0f633a0223d9a1dcccfcf38a64c9de0874dfcbfac0c6941ccf074d63a2ce0e1e",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://c3ba8de493ce5e34221d17bb880a7ac9ee54910f60bb24d254df2a26e2750700",
-				"dweb:/ipfs/QmYEfKf9rybhLcLQLM1gfFnmmn3WJ4acEJhRZXxn273rLG"
+				"bzz-raw://864a40efcffdf408044c332a5aa38ec5618ed7b4eecb8f65faf45671bd6cdc65",
+				"dweb:/ipfs/QmQJquTMtc6fgm5JQzGdsGpA2fqBe3MHWEdt2qzaLySMdN"
 			]
 		},
-		"NFT-Contracts/contracts/External/Context.sol": {
-			"keccak256": "0xaac395688edc1129b10b3c1ff17b281ed12211fdad9d79fbc7c66451e48fd1ff",
+		"Arevea-NFT-Market/NFT-Contracts/contracts/finalMarket_single.sol": {
+			"keccak256": "0x66f5877722d6b067524dc94fbf9cfc6b57b9a0a59d4d3a13ff0c563e9dd29eab",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://4b1edd816216205384dad14ca182e5c1f369d5c441791be33738e0e0b529feaa",
-				"dweb:/ipfs/QmVM6viMdjTjqY8Em6i2iKgKQtcwxTXzUchNxSfZHkUMMq"
-			]
-		},
-		"NFT-Contracts/contracts/External/ERC165.sol": {
-			"keccak256": "0x8e00d4240c1b03af55c4dc34bf9875185da87964f448a4cd34cb5cf80d870014",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://62cec786e5891e17eb73c8da07f8a4f39583425acb791b59218836e3655a81ad",
-				"dweb:/ipfs/QmUVc283Q5EhBtx8qgju3ScGncoHxEMtqSmSSJFFzPtYYV"
-			]
-		},
-		"NFT-Contracts/contracts/External/EnumerableMap.sol": {
-			"keccak256": "0x3fa04da15ec8b6da6c026493ce01720cdcbbdf0c7a47c1e94be36f98673be0e1",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://e80830acf112bcd6ecd645f6a4ea5e9903491d93f0bb6d43e474449b5e57dacf",
-				"dweb:/ipfs/QmZRgjXjnhkLk786aPx95Hd2RDEYgeTyiERfjHYSXn3ri9"
-			]
-		},
-		"NFT-Contracts/contracts/External/EnumerableSet.sol": {
-			"keccak256": "0xaf7a8198fc17efcd6974e99b081660fc64c5fa99cbf1f50dc8904ef51985faea",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://b661006f91bea2ba819d3e36d8d8081bf0bfa2f35e657ecb43063eb70a2456dc",
-				"dweb:/ipfs/QmTUyWjKkrcqU5Qbe8bkxWwABoUxQvi5uTEzeQ3ktqkFSq"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC1155.sol": {
-			"keccak256": "0xbf541fc72c92377a1831c8bb3357357d8b1fb360b688c6616edbc501f592749e",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://a110557004f6f34333236bae1c1aa8b7a518d0355d93273d1724b662e77f93fd",
-				"dweb:/ipfs/QmSX8CMTw4c5TQaYiZByWEhtqEtnqYyKcacRApo5iiHbPx"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC1155MetadataURI.sol": {
-			"keccak256": "0xa8e4e795672233a02983bcd30485b7a455f59db738b22efb4bcef442a7dd5fab",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://48d8d13a431f22ea4d6fdaaeae79652481efe88603ee05f4d56aa53c7a06c460",
-				"dweb:/ipfs/QmVg3Exjz3T5nZG9HNMXkrLaKGuTQw4ek3yB8hXtrSbZwL"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC1155Receiver.sol": {
-			"keccak256": "0x542f404659cf47f597b70a95f2878b546768d2a1c1be92318a31430f38fa5375",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://a55480a037a571e3db9911e12206ea38d759d02ce2f9c9806aa6bbdb4f17f28e",
-				"dweb:/ipfs/QmTdF2HSAEG6W9eJmJ3XpYM9A13u17GV5SEhkqEb8pkbau"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC165.sol": {
-			"keccak256": "0x04477a1cac572cc62ecd9df747d418b5898d40a6099a253b061dad31575a75fd",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://4aefb7b8801f749cebe99f13ea15979df1c73a16dbefcf2eb0f310c93149bd7f",
-				"dweb:/ipfs/QmaGkUytPvCyquqpZbGe3eDkG2jCYZYVGug6GvVC1AavNi"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC721.sol": {
-			"keccak256": "0x7730deb9030fc7589d49619637693ad0a45d977c20d39c0067030563202565ab",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://9b5a88c3ab6855ba69405cde6712e58b6179e1ec3fc04b936d4ac7bc20cf490a",
-				"dweb:/ipfs/Qmc8CZyFfUhDyDzN9i4ijCogo3eSCKJuR3DgXRyYUE2fSt"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC721Enumerable.sol": {
-			"keccak256": "0xd08dfa0281ef8ccb90ef6e456afab1b90f4dfeefc3ee1e520f7916bfab2defec",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://d086e760dd7c3aab555d623cf6c137e84ca034ea1b7bbf53a07418726445276e",
-				"dweb:/ipfs/QmdwpyPzqjWj2wxFP5gXG8DPL4Xd54aMtH9zj5uRFxtmLo"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC721Metadata.sol": {
-			"keccak256": "0x806b84d02f9449da1eb72218f77cfdc09c6704d3b1ab7f48f465b5a52340e2b1",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://b6fd3c21d953cc537d81ded57684e4b89321f99ded42e5427bb77d7a33cc02f3",
-				"dweb:/ipfs/QmVZaMsvcAddPfEGJiy8vTWNfTUPgTVwrnPzGNbvfojfmT"
-			]
-		},
-		"NFT-Contracts/contracts/External/IERC721Receiver.sol": {
-			"keccak256": "0xbe43d698e6a9414104ec88ddca7c736e84e4ba08f3a97bb4be8704adf207c739",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://d16b0b1c9cd2e5a9e442cd0762bdb14559da3adc1be10b9c68be4d67c8bc9aff",
-				"dweb:/ipfs/QmQd3D21ng62sdTMRyhfyb2pXrivsRhQWtQrzmGvDn1ms2"
-			]
-		},
-		"NFT-Contracts/contracts/External/Ownable.sol": {
-			"keccak256": "0x6fb005d8205986c9adb09fa929a48b46c81c37c84922af923282939f28030db4",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://539dd641f233b73274984c158b4568a300f00727309c0cd05f6390ddf985b331",
-				"dweb:/ipfs/QmYnZsywQLeFGVisx46UZCtj9xRLU1h9ATjhWabxzFP4hS"
-			]
-		},
-		"NFT-Contracts/contracts/External/SafeMath.sol": {
-			"keccak256": "0xea060a43956deecfd79e602fc08adad0ac8e899ee37d67509b915546d249df3c",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://eca8af2c52fa895aadc9945608323acf24c0879d50ea3966415704a20e52a134",
-				"dweb:/ipfs/QmdA6QQ594Lj5fQAjdJo8bJTixGJKYok8VmjowxF5U9CQf"
-			]
-		},
-		"NFT-Contracts/contracts/External/Strings.sol": {
-			"keccak256": "0xe0c83dd25019c41fda8798164ae0399a42e70250f7991eaf8c142be9ce9c7edd",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://062b9f059c2065fc3bcb16d183371646b183bd64d61dacd1bfece569fa02de22",
-				"dweb:/ipfs/QmS4qk9W9opCSg55SbAVKCEKUsor7LKpoW4gUKf86rNKZg"
-			]
-		},
-		"NFT-Contracts/contracts/IERC20.sol": {
-			"keccak256": "0x1f32a75186bb2aaa1f9a4c13a4bf5a603b4af5dc2dfd9c8f71483b34f7f556c1",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://f9460ab52630c472d623084d34ab505eb4abfe9d0fdb44bfe46046e3fdb38c93",
-				"dweb:/ipfs/QmasRT1jYUAsRWDSvt4mfTfZH1jdP8uvUUzvsRWdRDN3uS"
-			]
-		},
-		"NFT-Contracts/contracts/IERC20Metadata.sol": {
-			"keccak256": "0x1ffe2047e11fcdd75b2aca845ef3428d93765011f9bdb0ca7bf5d9f95f62656a",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://7b608f183a24077b867dcf21b1e5956b431291324b6025cbb864eb295e005307",
-				"dweb:/ipfs/QmPsgCmqe4HYkFpvYJGWWbkLoQEdhWDzmhG6Lv54FXua8W"
-			]
-		},
-		"NFT-Contracts/contracts/MultipleNFT.sol": {
-			"keccak256": "0x47cfd5dec74d84078318bb47d4648aaa17b2edb24fa92150c731bd3bfc1ec120",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://b8afcea80881469be9e5c1b2e94fdcfc9c27b99d92b0b14c29c9ca6ca9e507ef",
-				"dweb:/ipfs/QmTUR6j64rNKXUTwGZcHi72bmeiSiJFPUzu7Y4BLP8QKL1"
-			]
-		},
-		"NFT-Contracts/contracts/NFT.sol": {
-			"keccak256": "0x8d2f13aa9784e611a0befa1eeba9d326c74c41efa84e7059ee59e22fd91496e8",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://8edae93f53ca5b80482a045e5888807c8482c15bfbe265182e208c8bf5195cff",
-				"dweb:/ipfs/QmUiGQ6PpVkQ6NNt1u5GuU7rGDxthAUwJTUkyiaRAjETMo"
-			]
-		},
-		"NFT-Contracts/contracts/market_place.sol": {
-			"keccak256": "0x8f8ad94c7a27a38c3c65628d5a21517175ea8b68dba78d6f52477f1c5c344b36",
-			"license": "MIT",
-			"urls": [
-				"bzz-raw://ad271d03242b4dc991c1d18c8e85e62f0868afa3e8f665f8062eeef5827ab51a",
-				"dweb:/ipfs/QmWDgGd3FZV3DUBb4VWMVBPhc8Ced1KQ9V5Y1Jg4j2GwUU"
+				"bzz-raw://ecbd5c1b30d880d06d6abd0db971dd9356612daf9405854ae23d63838d2bd001",
+				"dweb:/ipfs/QmPffKBasxsSxFV6vuGunD63TYNCEFTb1M4AySsGyEwgeC"
 			]
 		}
 	},

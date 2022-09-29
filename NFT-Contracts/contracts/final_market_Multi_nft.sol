@@ -313,20 +313,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Function to buyAreveaToken from Arevea token owner a required amount 
-     function buyAreveaToken(address _erc20_contract, address _buyer, uint256 _amount) public returns (bool){
-      address  ERC20_contract= _erc20_contract;
-      IERC20(ERC20_contract).transferFrom(0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c,_buyer, _amount);
-    return(true);
 
-   }
-   //Function to SellAreveaToken 
-    function Sell_AreveaToken(address _erc20_contract, address seller, uint256 _amount) public returns (bool){
-      address  ERC20_contract= _erc20_contract;
-      IERC20(ERC20_contract).transferFrom(seller, 0x2258c5b9C82ff0Fa923756ED3FD2aCb5616dF57c, _amount);
-      return(true);
-
-   }
 
     // NFT FIXED SALE
 

@@ -54,12 +54,7 @@ contract MultipleNFT is ERC1155 {
         bytes32 hash = keccak256(abi.encodePacked(this, caller, tokenURI, sign.nonce));
         require(owner == ecrecover(keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash)), sign.v, sign.r, sign.s), "Owner sign verification failed");
     }
-      /**
-     * @dev Internal function to mint a new token.
-     * Reverts if the given token ID already exists.
-     * @param tokenURI string memory URI of the token to be minted.
-     * @param fee uint256 royalty of the token to be minted.
-     */
+
 
     function createMultiple(string memory uri, uint256 supply, uint256 fee)  public {
         //require(!usedNonce[sign.nonce],"Nonce : Invalid Nonce");

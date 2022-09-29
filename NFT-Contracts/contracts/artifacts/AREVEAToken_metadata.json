@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.16+commit.07a7930e"
+		"version": "0.8.7+commit.e28d00a7"
 	},
 	"language": "Solidity",
 	"output": {
@@ -491,7 +491,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"NFT-Contracts/contracts/AREVEAToken.sol": "AREVEAToken"
+			"Arevea-NFT-Market/NFT-Contracts/contracts/AREVEAToken.sol": "AREVEAToken"
 		},
 		"evmVersion": "london",
 		"libraries": {},
@@ -499,13 +499,13 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
 	},
 	"sources": {
-		"NFT-Contracts/contracts/AREVEAToken.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/AREVEAToken.sol": {
 			"keccak256": "0xdad9960a4cf0db2347d4b66fab9ef71f4de82d9ef5130abc7710a85ae283df97",
 			"license": "MIT",
 			"urls": [
@@ -513,7 +513,7 @@
 				"dweb:/ipfs/QmYCNATSwe9iNxt86bzMwuEUyzUnYQ4om2LtLo3dHCyFZk"
 			]
 		},
-		"NFT-Contracts/contracts/ERC20.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/ERC20.sol": {
 			"keccak256": "0x618fd2368aea00f5c27b8cd4f9600484b1d0320ed2967d46c04ba76eab2a21a3",
 			"license": "MIT",
 			"urls": [
@@ -521,7 +521,7 @@
 				"dweb:/ipfs/QmZujg9EuN1UzncJ7cqmkZSidCpdygacQXJpPBHixxHA7p"
 			]
 		},
-		"NFT-Contracts/contracts/External/Context.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/External/Context.sol": {
 			"keccak256": "0xaac395688edc1129b10b3c1ff17b281ed12211fdad9d79fbc7c66451e48fd1ff",
 			"license": "MIT",
 			"urls": [
@@ -529,7 +529,7 @@
 				"dweb:/ipfs/QmVM6viMdjTjqY8Em6i2iKgKQtcwxTXzUchNxSfZHkUMMq"
 			]
 		},
-		"NFT-Contracts/contracts/External/Ownable.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/External/Ownable.sol": {
 			"keccak256": "0x6fb005d8205986c9adb09fa929a48b46c81c37c84922af923282939f28030db4",
 			"license": "MIT",
 			"urls": [
@@ -537,7 +537,7 @@
 				"dweb:/ipfs/QmYnZsywQLeFGVisx46UZCtj9xRLU1h9ATjhWabxzFP4hS"
 			]
 		},
-		"NFT-Contracts/contracts/External/SafeMath.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/External/SafeMath.sol": {
 			"keccak256": "0xea060a43956deecfd79e602fc08adad0ac8e899ee37d67509b915546d249df3c",
 			"license": "MIT",
 			"urls": [
@@ -545,7 +545,7 @@
 				"dweb:/ipfs/QmdA6QQ594Lj5fQAjdJo8bJTixGJKYok8VmjowxF5U9CQf"
 			]
 		},
-		"NFT-Contracts/contracts/IERC20.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/IERC20.sol": {
 			"keccak256": "0x1f32a75186bb2aaa1f9a4c13a4bf5a603b4af5dc2dfd9c8f71483b34f7f556c1",
 			"license": "MIT",
 			"urls": [
@@ -553,7 +553,7 @@
 				"dweb:/ipfs/QmasRT1jYUAsRWDSvt4mfTfZH1jdP8uvUUzvsRWdRDN3uS"
 			]
 		},
-		"NFT-Contracts/contracts/IERC20Metadata.sol": {
+		"Arevea-NFT-Market/NFT-Contracts/contracts/IERC20Metadata.sol": {
 			"keccak256": "0x1ffe2047e11fcdd75b2aca845ef3428d93765011f9bdb0ca7bf5d9f95f62656a",
 			"license": "MIT",
 			"urls": [
