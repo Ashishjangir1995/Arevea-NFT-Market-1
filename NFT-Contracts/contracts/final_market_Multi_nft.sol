@@ -1,8 +1,5 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
-     /**
-     * @dev importing IERC165,IERC1155,ERC165Checker,IERC20,Safemath,IERC20
-     */
 
 import "@openzeppelin/contracts/utils/introspection/IERC165.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155.sol";
@@ -10,10 +7,10 @@ import "@openzeppelin/contracts/utils/introspection/ERC165Checker.sol";
 import "@openzeppelin/contracts/token/ERC1155/IERC1155Receiver.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
-// NFTSingleMarketplace contract inherits ERC1155 and  above imports 
-contract NFTMultiMarketplace {
+
+contract NFTMarketplace1155 {
     using SafeMath for uint256;
- //define struct for Fixed sale 
+
     struct FixedSale {
         address nftSeller;
         address nftBuyer;
@@ -21,7 +18,7 @@ contract NFTMultiMarketplace {
         uint256 amount;
         uint256 salePrice;
     }
-//define Auction for multi nft market 
+
     struct Auction {
         uint256 auctionStart;
         uint256 auctionEnd;
@@ -32,29 +29,26 @@ contract NFTMultiMarketplace {
         address nftSeller;
         address erc20;
     }
-    //define struct for SaleInfo
+
     struct SaleInfo {
         address _nftContractAddress;
         uint256 _tokenID;
     }
-     //mapping address to FixedSale for nftContractFixedSale
+
     mapping(address => mapping(uint256 => FixedSale)) nftContractFixedSale;
-     //mapping address for uint variable nftSaleStatus
     mapping(address => mapping(uint256 => uint256)) public nftSaleStatus;
-    //mapping address for uint variable indexFixedSaleNFT
     mapping(address => mapping(uint256 => uint256)) indexFixedSaleNFT;
-    //mapping address for uint variable nftContractAuctionSale
+
     mapping(address => mapping(uint256 => Auction)) nftContractAuctionSale;
-    //mapping address for uint variable userBidPriceOnNFT
-    mapping(address => mapping(uint256 => mapping(address => uint256))) public userBidPriceOnNFT;
-    //mapping address for uint variable indexAuctionSaleNFT
+    mapping(address => mapping(uint256 => mapping(address => uint256)))
+        public userBidPriceOnNFT;
     mapping(address => mapping(uint256 => uint256)) indexAuctionSaleNFT;
 
     SaleInfo[] fixedSaleNFT;
     SaleInfo[] auctionSaleNFT;
 
     bytes4 public constant IID_IERC1155 = type(IERC1155).interfaceId;
-     //Event NftFixedSale
+
     event NftFixedSale(
         address nftContractAddress,
         address nftSeller,
@@ -64,20 +58,19 @@ contract NFTMultiMarketplace {
         uint256 salePrice,
         uint256 timeOfSale
     );
-    //Event CancelNFTFixedSale
+
     event CancelNftFixedSale(
         address nftContractAddress,
         address nftSeller,
         uint256 tokenId
     );
-    //Event NftFixedSalePriceUpdated
+
     event NftFixedSalePriceUpdated(
         address nftContractAddress,
         uint256 tokenId,
         uint256 updateSalePrice
     );
 
-    //Event NftBuyFromFixedSale
     event NftBuyFromFixedSale(
         address nftContractAddress,
         address nftBuyer,
@@ -85,7 +78,7 @@ contract NFTMultiMarketplace {
         uint256 tokenId,
         uint256 nftBuyPrice
     );
-    //Event NftAuctionSale
+
     event NftAuctionSale(
         address nftContractAddress,
         address nftSeller,
@@ -95,34 +88,34 @@ contract NFTMultiMarketplace {
         uint256 auctionEnd,
         uint256 minPrice
     );
-    //Event NftAuctionSale
+
     event NftBidPrice(
         address nftContractAddress,
         uint256 tokenId,
         uint256 bidPrice,
         address nftBidder
     );
-    //Event NftBidPrice 
+
     event NftAuctionBidPriceUpdate(
         address nftContractAddress,
         uint256 tokenId,
         uint256 finalBidPrice,
         address nftBidder
     );
-    //Event CancelNftAuctionSale
+
     event CancelNftAuctionSale(
         address nftContractAddress,
         uint256 tokenId,
         address nftSeller
     );
-    //Event NftAuctionBidPriceUpdate
+
     event NftBuyNowPriceUpdate(
         address nftContractAddress,
         uint256 tokenId,
         uint256 updateBuyNowPrice,
         address nftOwner
     );
-    //Event NftAuctionSettle
+
     event NftAuctionSettle(
         address nftContractAddress,
         uint256 tokenId,
@@ -130,14 +123,13 @@ contract NFTMultiMarketplace {
         uint256 nftHighestBid,
         address nftSeller
     );
-    //Event withdrawNftBid
+
     event withdrawNftBid(
         address nftContractAddress,
         uint256 tokenId,
         address bidClaimer
     );
 
-    //Check if NFT in Sale or not 
     modifier isNftAlreadyInSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 0,
@@ -145,7 +137,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check if NFT in Fixed sale or not
+
     modifier isNftInFixedSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 1,
@@ -153,7 +145,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check the owner of NFT 
+
     modifier isSaleStartByOwner(address _nftContractAddress, uint256 _tokenId) {
         require(
             _ownerOf(_nftContractAddress, _tokenId),
@@ -161,7 +153,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check the owner of NFT 
+
     modifier isSaleResetByOwner(address _nftContractAddress, uint256 _tokenId) {
         require(
             msg.sender ==
@@ -170,7 +162,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check the Approval is given or not 
+
     modifier isContractApprove(address _nftContractAddress, uint256 _tokenId) {
         require(
             IERC1155(_nftContractAddress).isApprovedForAll(
@@ -181,7 +173,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check buying and selling price 
+
     modifier buyPriceMeetSalePrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -199,12 +191,12 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-     //Check if price is greater than zero
+
     modifier priceGreaterThanZero(uint256 _price) {
         require(_price > 0, "Price cannot be 0");
         _;
     }
-    //Check if NfT in Auction Sale or not 
+
     modifier isNftInAuctionSale(address _nftContractAddress, uint256 _tokenId) {
         require(
             nftSaleStatus[_nftContractAddress][_tokenId] == 2,
@@ -212,7 +204,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check if Aucton is ended
+
     modifier isAuctionOver(address _nftContractAddress, uint256 _tokenId) {
         require(
             block.timestamp >
@@ -222,7 +214,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check Highest bid 
+
     modifier islatestBidGreaterPreviousOne(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -250,7 +242,7 @@ contract NFTMultiMarketplace {
 
         _;
     }
-    //Check Auction is continuing 
+
     modifier isAuctionOngoing(address _nftContractAddress, uint256 _tokenId) {
         require(
             block.timestamp <
@@ -260,7 +252,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    // Check if auction is Reset by the owner 
+
     modifier isAuctionResetByOwner(
         address _nftContractAddress,
         uint256 _tokenId
@@ -272,7 +264,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check if Bid is Greater 
+
     modifier isUpdatedBidGreaterPreviousOne(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -300,7 +292,7 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-    //Check if bid is made or not    
+
     modifier isbidNotMakeTillNow(
         address _nftContractAddress,
         uint256 _tokenId
@@ -313,7 +305,6 @@ contract NFTMultiMarketplace {
         );
         _;
     }
-
 
     // NFT FIXED SALE
 
@@ -351,7 +342,7 @@ contract NFTMultiMarketplace {
             _amount,
             _data
         );
-    
+
         emit NftFixedSale(
             _nftContractAddress,
             msg.sender,
@@ -362,7 +353,7 @@ contract NFTMultiMarketplace {
             block.timestamp
         );
     }
-    //Function to CancelFixedSale
+
     function cancelFixedsale(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -387,7 +378,7 @@ contract NFTMultiMarketplace {
 
         emit CancelNftFixedSale(_nftContractAddress, msg.sender, _tokenId);
     }
-    //Function to updateFixedSalePrice
+
     function updateFixedSalePrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -407,7 +398,7 @@ contract NFTMultiMarketplace {
             _updateSalePrice
         );
     }
-    //Function to buyFromFixedSale
+
     function buyFromFixedSale(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -449,7 +440,9 @@ contract NFTMultiMarketplace {
         _isTokenOrCoin(
             nftContractFixedSale[nftContractAddress][tokenID].nftSeller,
             nftContractFixedSale[nftContractAddress][tokenID].erc20,
-            nftContractFixedSale[nftContractAddress][tokenID].salePrice*_nftAmount
+            nftContractFixedSale[nftContractAddress][tokenID].salePrice *
+                _nftAmount,
+            false
         );
 
         emit NftBuyFromFixedSale(
@@ -461,7 +454,7 @@ contract NFTMultiMarketplace {
         );
     }
 
-    // NFT AUCTION SALE Function
+    // NFT AUCTION SALE
 
     function createNftAuctionSale(
         address _nftContractAddress,
@@ -479,16 +472,16 @@ contract NFTMultiMarketplace {
         isContractApprove(_nftContractAddress, _tokenId)
         priceGreaterThanZero(_minPrice)
     {
-        require(_nftAmount!=0,"zero invalid");
-        
+        require(_nftAmount != 0, "zero invalid");
+
         address nftContractAddress = _nftContractAddress;
-        address erc20 = _erc20; 
+        address erc20 = _erc20;
         uint256 tokenId = _tokenId;
-        uint256 auctionStart = _auctionStart;   
-        uint256 auctionEnd  = _auctionEnd;    
-        uint256 minPrice    = _minPrice;    
-        uint256 nftAmount   = _nftAmount;     
-        bytes memory data        = _data;         
+        uint256 auctionStart = _auctionStart;
+        uint256 auctionEnd = _auctionEnd;
+        uint256 minPrice = _minPrice;
+        uint256 nftAmount = _nftAmount;
+        bytes memory data = _data;
 
         _storedNftAuctionDetails(
             nftContractAddress,
@@ -501,7 +494,8 @@ contract NFTMultiMarketplace {
             data
         );
 
-        indexAuctionSaleNFT[nftContractAddress][tokenId] = auctionSaleNFT.length;
+        indexAuctionSaleNFT[nftContractAddress][tokenId] = auctionSaleNFT
+            .length;
         auctionSaleNFT.push(SaleInfo(nftContractAddress, tokenId));
 
         emit NftAuctionSale(
@@ -514,7 +508,7 @@ contract NFTMultiMarketplace {
             minPrice
         );
     }
-    //Function to makeBid
+
     function makeBid(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -541,7 +535,6 @@ contract NFTMultiMarketplace {
                 nftContractAuctionSale[_nftContractAddress][_tokenId].erc20
             );
         }
-        
 
         nftContractAuctionSale[_nftContractAddress][_tokenId]
             .nftHighestBid = _bidPrice;
@@ -554,7 +547,7 @@ contract NFTMultiMarketplace {
 
         emit NftBidPrice(_nftContractAddress, _tokenId, _bidPrice, msg.sender);
     }
-    //Function to update Bid Price 
+
     function updateTheBidPrice(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -604,7 +597,7 @@ contract NFTMultiMarketplace {
             msg.sender
         );
     }
-    //Function to cancelAuctionSale
+
     function _cancelAuctionSale(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
@@ -621,7 +614,7 @@ contract NFTMultiMarketplace {
             address(this),
             msg.sender,
             _tokenId,
-        nftContractAuctionSale[nftContractAddress][tokenId].nftAmount,
+            nftContractAuctionSale[nftContractAddress][tokenId].nftAmount,
             ""
         );
 
@@ -631,7 +624,7 @@ contract NFTMultiMarketplace {
 
         emit CancelNftAuctionSale(_nftContractAddress, _tokenId, msg.sender);
     }
-    //Function to settelAuction
+
     function settleAuction(address _nftContractAddress, uint256 _tokenId)
         external
         isNftInAuctionSale(_nftContractAddress, _tokenId)
@@ -660,7 +653,7 @@ contract NFTMultiMarketplace {
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller
         );
     }
-    //Function to withdrawBid
+
     function withdrawBid(address _nftContractAddress, uint256 _tokenId)
         external
         isAuctionOver(_nftContractAddress, _tokenId)
@@ -682,23 +675,22 @@ contract NFTMultiMarketplace {
 
         emit withdrawNftBid(_nftContractAddress, _tokenId, msg.sender);
     }
-    //Function to View getNFTAuctionSaleDetails
+
     function getNftAuctionSaleDetails(
         address _nftContractAddress,
         uint256 _tokenId
     ) external view returns (Auction memory) {
         return nftContractAuctionSale[_nftContractAddress][_tokenId];
     }
-    //Function to view getAuctionSaleNfT
+
     function getAuctionSaleNFT() external view returns (SaleInfo[] memory) {
         return auctionSaleNFT;
     }
 
-    //Function to view getFixedSaleNfT
     function getFixedSaleNFT() external view returns (SaleInfo[] memory) {
         return fixedSaleNFT;
     }
-    //Function to view getFixedSale
+
     function getFixedSale(address _nftContractAddress, uint256 _tokenId)
         external
         view
@@ -706,7 +698,7 @@ contract NFTMultiMarketplace {
     {
         return nftContractFixedSale[_nftContractAddress][_tokenId];
     }
-    //Function on ERC1155 Received
+
     function onERC1155Received(
         address _operator,
         address _from,
@@ -716,7 +708,7 @@ contract NFTMultiMarketplace {
     ) external pure returns (bytes4) {
         return 0xf23a6e61;
     }
-    //Function to Batch Received
+
     function onERC1155BatchReceived(
         address _operator,
         address _from,
@@ -726,19 +718,24 @@ contract NFTMultiMarketplace {
     ) external pure returns (bytes4) {
         return 0xbc197c81;
     }
-    //internal function to check token or coin 
+
     function _isTokenOrCoin(
         address _nftSeller,
         address _erc20,
-        uint256 _buyAmount
+        uint256 _buyAmount,
+        bool auction
     ) internal {
         if (_erc20 != address(0)) {
-            _tokenAmountTransfer(_nftSeller, _erc20, _buyAmount);
+            if (auction) {
+                IERC20(_erc20).transfer(_nftSeller, _buyAmount);
+            } else {
+                _tokenAmountTransfer(_nftSeller, _erc20, _buyAmount);
+            }
         } else {
             _nativeAmountTransfer(_nftSeller, _buyAmount);
         }
     }
-     //Internal Function to token amount transfer 
+
     function _tokenAmountTransfer(
         address _nftSeller,
         address _erc20,
@@ -749,14 +746,14 @@ contract NFTMultiMarketplace {
             "allowance not enough"
         );
     }
-    //Internal function to amount transfer
+
     function _nativeAmountTransfer(address _nftSeller, uint256 _buyAmount)
         internal
     {
         (bool success, ) = _nftSeller.call{value: _buyAmount}("");
         require(success, "refund failed");
     }
-    //internal function to checkFixedSale
+
     function _checkFixedSale(
         address _nftContractAddress,
         uint256 _tokenId,
@@ -781,19 +778,18 @@ contract NFTMultiMarketplace {
                 .sender;
         }
     }
-    //Internal Function to Transfer and PaySeller
+
     function _transferNftAndPaySeller(
         address _nftContractAddress,
         uint256 _tokenId,
         uint256 _bidPrice,
         address _nftBuyer
     ) internal {
-
         IERC1155(_nftContractAddress).safeTransferFrom(
             address(this),
             _nftBuyer,
             _tokenId,
-        nftContractAuctionSale[_nftContractAddress][_tokenId].nftAmount,
+            nftContractAuctionSale[_nftContractAddress][_tokenId].nftAmount,
             ""
         );
 
@@ -802,10 +798,11 @@ contract NFTMultiMarketplace {
         _isTokenOrCoin(
             nftContractAuctionSale[_nftContractAddress][_tokenId].nftSeller,
             nftContractAuctionSale[_nftContractAddress][_tokenId].erc20,
-            _bidPrice
+            _bidPrice,
+            true
         );
     }
-    //Internal Function to storeNFT AuctionDetails
+
     function _storedNftAuctionDetails(
         address _nftContractAddress,
         address _erc20,
@@ -837,14 +834,14 @@ contract NFTMultiMarketplace {
             _data
         );
     }
-    //internal Function to bid amount transfer
+
     function _bidAmountTransfer(uint256 _buyAmount, address _erc20) internal {
         require(
             IERC20(_erc20).transferFrom(msg.sender, address(this), _buyAmount),
             "allowance not enough"
         );
     }
-    //Internal functino to check owner of nft
+
     function _ownerOf(address _nftContractAddress, uint256 tokenId)
         internal
         view
@@ -853,7 +850,7 @@ contract NFTMultiMarketplace {
         return
             IERC1155(_nftContractAddress).balanceOf(msg.sender, tokenId) != 0;
     }
-   //Function to check nft contract address
+
     function isERC1155(address _nftContractAddress)
         external
         view

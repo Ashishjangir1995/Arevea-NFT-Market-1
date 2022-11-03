@@ -298,7 +298,7 @@ contract ERC1155 is Context, ERC165,IERC1155{
 
 
 
-    /**
+    /***
         * @dev Internal function to mint a new token.
         * Reverts if the given token ID already exists.
         * @param tokenId uint256 ID of the token to be minted
@@ -307,14 +307,13 @@ contract ERC1155 is Context, ERC165,IERC1155{
         * @param _fee uint256 royalty of the token to be minted
     */
 
-    function _mint(uint256 tokenId, uint256 _supply, string memory _uri, uint256 _fee) internal {
+    function _mint(uint256 tokenId, uint256 _supply, string memory _uri) internal {
         require(!_exists(tokenId), "ERC1155: token already minted");
         require(_supply != 0, "Supply should be positive");
         require(bytes(_uri).length > 0, "uri should be set");
 
         creators[tokenId] = msg.sender;
         _tokenOwners.set(tokenId, msg.sender);
-        _royaltyFee[tokenId] = _fee;
         _balances[tokenId][msg.sender] = _supply;
         _setTokenURI(tokenId, _uri);
 

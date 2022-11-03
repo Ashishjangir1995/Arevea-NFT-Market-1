@@ -7,21 +7,20 @@ import "@openzeppelin/contracts/token/ERC721/ERC721.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/utils/cryptography/ECDSA.sol";
 import "@openzeppelin/contracts/utils/cryptography/draft-EIP712.sol";
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
-    bytes32 public constant MINTER_ROLE = keccak256("MINTER_ROLE");
-
+contract LazyNFT is ERC721URIStorage, EIP712 {
     string private constant names = "LazyNFTMinting-signature";
     string private constant version = "1";
-    uint256 public chainId = 4;
+    uint256 public chainId = 80004;
 
-    mapping(address => uint256) pendingWithdrawals;
+    address token;
 
-    constructor(address payable minter)
+    constructor(address _token)
         ERC721("LazyNFT", "LAZ")
         EIP712(names, version)
     {
-        _setupRole(MINTER_ROLE, minter);
+        token = _token;
     }
 
     /// @notice Represents an un-minted NFT, which has not yet been recorded into the blockchain. A signed voucher can be redeemed for a real NFT using the redeem function.
@@ -44,19 +43,14 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
         uint8 v,
         bytes32 r,
         bytes32 s,
+        uint256 amount,
         Permit calldata voucher
     ) public payable returns (uint256) {
         // make sure signature is valid and get the address of the signer
         address signer = executeSetIfSignatureMatch(v, r, s, voucher);
-    
-        // make sure that the signer is authorized to mint NFTs
-        require(
-            hasRole(MINTER_ROLE, signer),
-            "Signature invalid or unauthorized"
-        );
 
         // make sure that the redeemer is paying enough to cover the buyer's cost
-        require(msg.value >= voucher.minPrice, "Insufficient funds to redeem");
+        require(amount >= voucher.minPrice, "Insufficient funds to redeem");
 
         // first assign the token to the signer, to establish provenance on-chain
         _mint(signer, voucher.tokenId);
@@ -65,31 +59,10 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
         // transfer the token to the redeemer
         _transfer(signer, redeemer, voucher.tokenId);
 
-        // record payment to signer's withdrawal balance
-        pendingWithdrawals[signer] += msg.value;
+        //transfer token
+        transferToken(redeemer, signer, voucher.minPrice);
 
-        return voucher.tokenId;
-    }
-
-    /// @notice Transfers all pending withdrawal balance to the caller. Reverts if the caller is not an authorized minter.
-    function withdraw() public {
-        require(
-            hasRole(MINTER_ROLE, msg.sender),
-            "Only authorized minters can withdraw"
-        );
-
-        // IMPORTANT: casting msg.sender to a payable address is only safe if ALL members of the minter role are payable addresses.
-        address payable receiver = payable(msg.sender);
-
-        uint256 amount = pendingWithdrawals[receiver];
-        // zero account before transfer to prevent re-entrancy attack
-        pendingWithdrawals[receiver] = 0;
-        receiver.transfer(amount);
-    }
-
-    /// @notice Retuns the amount of Ether available to the caller to withdraw.
-    function availableToWithdraw() public view returns (uint256) {
-        return pendingWithdrawals[msg.sender];
+        return  voucher.minPrice;
     }
 
     function executeSetIfSignatureMatch(
@@ -97,16 +70,15 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
         bytes32 r,
         bytes32 s,
         Permit calldata voucher
-    ) internal view returns (address) {
+    ) public view returns (address) {
         bytes32 eip712DomainHash = keccak256(
             abi.encode(
                 keccak256(
-                    "EIP712Domain(string names,string version,uint256 chainId,address verifyingContract)"
+                    "EIP712Domain(string names,string version,uint256 chainId)"
                 ),
                 keccak256(bytes("LazyNFTMinting-signature")),
                 keccak256(bytes("1")),
-                chainId,
-                address(this)
+                chainId
             )
         );
 
@@ -136,15 +108,11 @@ contract LazyNFT is ERC721URIStorage, EIP712, AccessControl {
         return id;
     }
 
-    function supportsInterface(bytes4 interfaceId)
-        public
-        view
-        virtual
-        override(AccessControl, ERC721)
-        returns (bool)
-    {
-        return
-            ERC721.supportsInterface(interfaceId) ||
-            AccessControl.supportsInterface(interfaceId);
+    function transferToken(
+        address redeemer,
+        address signer,
+        uint256 minPrice
+    ) internal {
+        IERC20(token).transferFrom(redeemer, signer, minPrice);
     }
 }

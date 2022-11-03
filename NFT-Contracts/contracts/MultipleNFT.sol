@@ -56,11 +56,11 @@ contract MultipleNFT is ERC1155 {
     }
 
 
-    function createMultiple(string memory uri, uint256 supply, uint256 fee)  public {
+    function createMultiple(string memory uri, uint256 supply)  public {
         //require(!usedNonce[sign.nonce],"Nonce : Invalid Nonce");
         //usedNonce[sign.nonce] = true;
         //verifySign(uri, msg.sender, sign);
-        _mint(newItemId, supply, uri,fee);
+        _mint(newItemId, supply, uri);
         newItemId = newItemId+1;
 
     }
@@ -77,10 +77,16 @@ contract MultipleNFT is ERC1155 {
         _burnBatch(msg.sender, tokenIds, amounts);
     }
     //function to MintBatch nfts token
-    function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data) public {
-        _mintBatch(msg.sender, tokenIds, amounts, data);
+    
+    // function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data) public {
+    //     _mintBatch(to, tokenIds, amounts, data);
+    // }
+
+     function mintBatch(address to, uint256[] memory tokenIds, uint256[] memory amounts, bytes memory data)
+        public
+        
+    {
+        _mintBatch(to, tokenIds, amounts, data);
     }
-
-
     
 }

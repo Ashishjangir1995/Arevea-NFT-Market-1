@@ -2,6 +2,7 @@
 pragma solidity ^0.8.4;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
+import "@openzeppelin/contracts@4.7.3/token/ERC1155/extensions/ERC1155Supply.sol";
 
 contract MultipleNFT is ERC1155 {
     address owner;
@@ -53,4 +54,7 @@ contract MultipleNFT is ERC1155 {
 
         emit MintBatchNFT(to, ids, amounts, data);
     }
+    
+    
+
 }
